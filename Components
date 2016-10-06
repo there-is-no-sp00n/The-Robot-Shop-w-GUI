@@ -1,7 +1,10 @@
 
 //part_number
 //part_name
-//part_type(torso,head,arm,etc(
+//part_type(torso,head,arm,etc)
 //weight
 //cost
 //brief description
+
+
+//the above characteristics are inherited by the components classes
