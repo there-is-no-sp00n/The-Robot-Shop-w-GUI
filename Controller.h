@@ -8,6 +8,8 @@ class Controller
 {
     public:
         Controller();
+    
+        void create_new_comp();
     protected:
     private:
 };
