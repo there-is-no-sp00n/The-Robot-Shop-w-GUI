@@ -15,8 +15,6 @@ class Torso : virtual public Components
     protected:
         int torso_bat;
 
-        vector <Torso> all_torso;
-
     private:
 };
 

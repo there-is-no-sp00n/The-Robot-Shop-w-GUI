@@ -15,6 +15,10 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
         void set_robot();
 
         void print_all_models();
+
+        void create_comp();
+
+        void view_comp();
     ///protected:
     private:
         struct robo_bobo
@@ -35,6 +39,12 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
         };
 
         robo_bobo robo_cop;
+
+        vector <Head> all_head;
+        vector <Torso> all_torso;
+        vector <Arm> all_arm;
+        vector <Locomotor> all_loco;
+        vector <Battery> all_bat;
 
         vector <struct robo_bobo> hill;
 };

@@ -12,7 +12,7 @@ void Battery::set_bat()
     cout << endl;
 }
 
-//double Battery::get_battery(Battery pow)
-//{
-//    return pow.energy;
-//}
+double Battery::get_battery(Battery pow)
+{
+    return pow.energy;
+}

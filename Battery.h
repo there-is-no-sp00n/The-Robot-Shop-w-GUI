@@ -9,12 +9,10 @@ class Battery : virtual public Components
         Battery();
 
         void set_bat();
-        //double get_battery(Battery);
+        double get_battery(Battery);
 
     protected:
         double energy;
-
-        vector <Battery> all_battery;
 
     private:
 };

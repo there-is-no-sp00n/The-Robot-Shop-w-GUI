@@ -10,6 +10,9 @@ class Locomotor : virtual public Components
         void set_loco();
         void total_energy();
 
+        double get_max_speed(Locomotor);
+        double get_pow_eat(Locomotor);
+
     protected:
         double max_speed;
         double pow_eaten;

@@ -17,3 +17,13 @@ void Locomotor::set_loco()
     cin >> pow_eaten;
     cout << endl;
 }
+
+double Locomotor::get_max_speed(Locomotor obj)
+{
+    return obj.max_speed;
+}
+
+double Locomotor::get_pow_eat(Locomotor obj)
+{
+    return obj.pow_eaten;
+}
