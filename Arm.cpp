@@ -11,3 +11,8 @@ void Arm::set_arm()
     cin >> power_con;
     cout << endl;
 }
+
+double Arm::get_arm_power(Arm obj)
+{
+    return obj.power_con;
+}

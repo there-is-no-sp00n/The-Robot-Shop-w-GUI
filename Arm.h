@@ -9,10 +9,10 @@ class Arm : virtual public Components
         Arm();
         void set_arm();
 
+        double get_arm_power(Arm);
+
     protected:
         double power_con;
-
-        vector <Arm> all_arm;
 
     private:
 };
