@@ -19,13 +19,15 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
         void create_comp();
 
         void view_comp();
-    ///protected:
+
+        void tot_weight_cost( int []);
+
     private:
         struct robo_bobo
         {
-            double final_weight;
-            double final_cost;
-            double retail_price;
+            double final_weight = 0;
+            double final_cost = 0;
+            double retail_price = 0;
 
             string model_name;
             string model_num;

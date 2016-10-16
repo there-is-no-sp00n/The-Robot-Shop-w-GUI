@@ -2,7 +2,7 @@
 
 Robot::Robot()
 {
-    //ctor
+
 }
 
 void Robot::create_comp()
@@ -76,7 +76,6 @@ void Robot::create_comp()
 }
 void Robot::set_robot()
 {
-    //set_torso();
     int counter = 5;
     int user_choice[5];
     user_choice[0] = 0;
@@ -98,6 +97,7 @@ void Robot::set_robot()
         int part_type;
         cin >> part_type;
         cout << endl;
+        int j = 0;
 
         if (part_type > 5)
         {
@@ -109,7 +109,8 @@ void Robot::set_robot()
         {
             if (user_choice[0] == 0)
             {
-                for(int i = 0; i < all_head.size(); i++)
+                j = all_head.size();
+                for(int i = 0; i < j; i++)
                 {
                     cout << endl;
                     cout << "HEAD NUMBER: " << i << endl;
@@ -140,7 +141,8 @@ void Robot::set_robot()
         {
             if (user_choice[1] == 0)
             {
-                for(int i = 0; i < all_torso.size(); i++)
+                j = all_torso.size();
+                for(int i = 0; i < j ; i++)
                 {
                     cout << endl;
                     cout << "TORSO NUMBER: " << i << endl;
@@ -152,7 +154,7 @@ void Robot::set_robot()
                     cout << "Torso Battery: " << all_torso[i].get_total_battery(all_torso[i]) << endl;
                     cout << endl;
                 }
-                cout << "Which HEAD model would you like? ";
+                cout << "Which TORSO model would you like? ";
                 int user;
                 cin >> user;
                 robo_cop.robo_t = all_torso[user];
@@ -171,7 +173,8 @@ void Robot::set_robot()
         {
             if (user_choice[2] == 0)
             {
-                for(int i = 0; i < all_arm.size(); i++)
+                j = all_arm.size();
+                for(int i = 0; i < j; i++)
                 {
                     cout << endl;
                     cout << "ARM NUMBER: " << i << endl;
@@ -187,12 +190,14 @@ void Robot::set_robot()
                 int user;
                 cin >> user;
                 robo_cop.first_arm = all_arm[user];
-                user_choice[2]++;
+                user_choice[2] = 1;
+                continue;
             }
 
             else if (user_choice[2] == 1)
             {
-                for(int i = 0; i < all_arm.size(); i++)
+                j = all_arm.size();
+                for(int i = 0; i < j; i++)
                 {
                     cout << endl;
                     cout << "ARM NUMBER: " << i << endl;
@@ -208,7 +213,7 @@ void Robot::set_robot()
                 int user;
                 cin >> user;
                 robo_cop.second_arm = all_arm[user];
-                user_choice[2]++;
+                user_choice[2] = 2;
             }
             else
             {
@@ -222,7 +227,8 @@ void Robot::set_robot()
         {
             if (user_choice[3] == 0)
             {
-                for(int i = 0; i < all_loco.size(); i++)
+                j = all_loco.size();
+                for(int i = 0; i < j; i++)
                 {
                     cout << endl;
                     cout << "LOCOMOTOR NUMBER: " << i << endl;
@@ -254,9 +260,10 @@ void Robot::set_robot()
 
         else if(part_type == 4)
         {
-            if (user_choice[4] < robo_cop.robo_t.get_total_battery(robo_cop.robo_t))
+            if (user_choice[4] == 0)
             {
-                for(int i = 0; i < all_bat.size(); i++)
+                j = all_bat.size();
+                for(int i = 0; i < j; i++)
                 {
                     cout << endl;
                     cout << "BATTERY NUMBER: " << i << endl;
@@ -268,7 +275,8 @@ void Robot::set_robot()
                     cout << "Battery Power: " << all_bat[i].get_battery(all_bat[i]) << endl;
                     cout << endl;
                 }
-                cout << "You can have " << robo_cop.robo_t.get_total_battery(robo_cop.robo_t) << " battery(ies)." << endl;
+                cout << endl;
+                cout << "The selected Torso model allows " << robo_cop.robo_t.get_total_battery(robo_cop.robo_t) << " battery(ies)." << endl;
                 cout << "Which BATTERY model would you like? ";
                 int user;
                 cin >> user;
@@ -278,7 +286,7 @@ void Robot::set_robot()
 
             else
             {
-                cout << "Can't have more than " << robo_cop.robo_t.get_total_battery(robo_cop.robo_t) << " battery(ies)!" << endl;
+                cout << "Can't have more than one battery type!" << endl;
                 cout << endl;
                 continue;
             }
@@ -302,16 +310,10 @@ void Robot::set_robot()
     cout << "What is the robot's model number? ";
     cin >> robo_cop.model_num;
     cout << endl;
+    robo_cop.final_weight = 0;
+    robo_cop.final_cost = 0;
 
-    robo_cop.final_weight = (robo_cop.robo_t.ahoy.comp_weight) + (robo_cop.loco_coco.ahoy.comp_weight);
-    robo_cop.final_weight += (robo_cop.robo_t.get_total_battery(robo_cop.robo_t))*(robo_cop.power_af.ahoy.comp_weight);
-    robo_cop.final_weight += (robo_cop.first_arm.ahoy.comp_weight) + (robo_cop.second_arm.ahoy.comp_weight);
-    robo_cop.final_weight += (robo_cop.noggin.ahoy.comp_weight);
-
-    robo_cop.final_cost = (robo_cop.robo_t.ahoy.comp_cost) + (robo_cop.loco_coco.ahoy.comp_cost);
-    robo_cop.final_cost += (robo_cop.robo_t.get_total_battery(robo_cop.robo_t))*(robo_cop.power_af.ahoy.comp_cost);
-    robo_cop.final_cost += (robo_cop.first_arm.ahoy.comp_cost) + (robo_cop.second_arm.ahoy.comp_cost);
-    robo_cop.final_cost += robo_cop.noggin.ahoy.comp_cost;
+    tot_weight_cost(user_choice);
 
     cout << "Total Cost Is: " << robo_cop.final_cost << endl;
     cout << "What is your retail price for this robot model? ";
@@ -323,7 +325,8 @@ void Robot::set_robot()
 void Robot::view_comp()
 {
     int i;
-    for (i = 0; i < all_head.size(); i++)
+    int j = all_head.size();
+    for (i = 0; i < j; i++)
     {
         cout << endl;
         cout << "Head Name: " << all_head[i].ahoy.comp_name << endl;
@@ -333,7 +336,8 @@ void Robot::view_comp()
         cout << endl;
     }
 
-    for (i = 0; i < all_torso.size(); i++)
+    j = all_torso.size();
+    for (i = 0; i < j; i++)
     {
         cout << endl;
         cout << "Torso Name: " << all_torso[i].ahoy.comp_name << endl;
@@ -344,7 +348,8 @@ void Robot::view_comp()
         cout << endl;
     }
 
-    for (i = 0; i < all_arm.size(); i++)
+    j = all_arm.size();
+    for (i = 0; i < j; i++)
     {
         cout << endl;
         cout << "Arm Vector Size: " << all_arm.size() << endl;
@@ -356,7 +361,8 @@ void Robot::view_comp()
         cout << endl;
     }
 
-    for (i = 0; i < all_loco.size(); i++)
+    j = all_loco.size();
+    for (i = 0; i < j; i++)
     {
         cout << endl;
         cout << "Locomotor Name: " << all_loco[i].ahoy.comp_name << endl;
@@ -368,7 +374,8 @@ void Robot::view_comp()
         cout << endl;
     }
 
-    for (i = 0; i < all_bat.size(); i++)
+    j = all_bat.size();
+    for (i = 0; i < j; i++)
     {
         cout << endl;
         cout << "Battery Name: " << all_bat[i].ahoy.comp_name << endl;
@@ -390,21 +397,94 @@ void Robot::print_all_models()
 
     for (int i = 0; i  < siz; i++)
     {
-        //Torso obj;
-        //int tot_bat = hill[i].robo_t.get_total_battery(hill[i].robo_t);
         cout << endl;
 
         cout << "Model Name: " << hill[i].model_name << endl;
         cout << "Model Num: " << hill[i].model_num << endl;
-
-        //cout << "T_Weight: " << hill[i].robo_t.ahoy.comp_weight<<endl;
-        //cout << "L_Weight: " << hill[i].loco_coco.ahoy.comp_weight<<endl;
-        //cout << "B_Weight: " << (hill[i].robo_t.get_total_battery(hill[i].robo_t))*(hill[i].power_af.ahoy.comp_weight)<<endl;
-
         cout << "Weight: " << hill[i].final_weight << endl;
         cout << "Cost: " << hill[i].final_cost << endl;
+        cout << "Retail Price: " << hill[i].retail_price << endl;
 
         cout << endl;
+    }
+
+}
+
+void Robot::tot_weight_cost(int choice[])
+{
+    cout << endl;
+    if(choice[0] == 0)
+    {
+        robo_cop.final_weight += 0;
+        robo_cop.final_cost += 0;
+    }
+
+    else if (choice[0] == 1)
+    {
+        robo_cop.final_weight += robo_cop.noggin.ahoy.comp_weight;
+        robo_cop.final_cost += robo_cop.noggin.ahoy.comp_cost;
+    }
+
+    if(choice[1] == 0)
+    {
+        robo_cop.final_weight += 0;
+        robo_cop.final_cost += 0;
+    }
+
+    else if (choice[1] == 1)
+    {
+        robo_cop.final_weight += robo_cop.robo_t.ahoy.comp_weight;
+        robo_cop.final_cost += robo_cop.robo_t.ahoy.comp_cost;
+    }
+
+    if(choice[2] == 0)
+    {
+        robo_cop.final_weight += 0;
+        robo_cop.final_cost += 0;
+    }
+
+    else if ((choice[2] == 1) || (choice[2] == 2))
+    {
+        if (choice[2] == 2)
+        {
+            robo_cop.final_weight += robo_cop.first_arm.ahoy.comp_weight;
+            robo_cop.final_cost += robo_cop.first_arm.ahoy.comp_cost;
+
+            robo_cop.final_weight += robo_cop.second_arm.ahoy.comp_weight;
+            robo_cop.final_cost += robo_cop.second_arm.ahoy.comp_cost;
+        }
+
+        else if(choice[2] == 1)
+        {
+            robo_cop.final_weight += robo_cop.first_arm.ahoy.comp_weight;
+            robo_cop.final_cost += robo_cop.first_arm.ahoy.comp_cost;
+        }
+    }
+
+    if(choice[3] == 0)
+    {
+        robo_cop.final_weight += 0;
+        robo_cop.final_cost += 0;
+    }
+
+    else if (choice[3] == 1)
+    {
+        robo_cop.final_weight += robo_cop.loco_coco.ahoy.comp_weight;
+        robo_cop.final_cost += robo_cop.loco_coco.ahoy.comp_cost;
+    }
+
+    if(choice[4] == 0)
+    {
+        robo_cop.final_weight += 0;
+        robo_cop.final_cost += 0;
+    }
+
+    else if (choice[4] == 1)
+    {
+        int num_bat;
+        num_bat = robo_cop.robo_t.get_total_battery(robo_cop.robo_t);
+        robo_cop.final_weight += (num_bat*robo_cop.power_af.ahoy.comp_weight);
+        robo_cop.final_cost += (num_bat*robo_cop.power_af.ahoy.comp_cost);
     }
 
 }
