@@ -10,9 +10,11 @@ void Controller::run_prog()
     int flag = 1;
 
     Robot obj;
+    Order obj_1;
 
     while (flag)
     {
+
         cout << "Press 1 to make robot components" << endl;
         cout << "Press 2 to view components" << endl;
         cout << "Press 3 to create robot" << endl;

@@ -77,3 +77,45 @@ void Order::get_tot_price(double retail_price)
 {
     orders.total_price += retail_price;
 }
+
+void Order::view_bill_of_sale()
+{
+    cout << endl;
+
+    cout << "Date of Sale: " << orders.date_of_sale << endl;
+    cout << "Customer Number: " << orders.cust_name << endl;
+    cout << "Order Number: " << orders.order_num << endl;
+    cout << "# of Robots ordered: " << orders.num_of_robots << endl;
+    for (int i = 0; i < orders.num_of_robots; i++)
+    {
+        cout << "**Robot Model # " << i << ": " << orders.type_of_robot[i] << endl;
+    }
+    cout << "Total Price: " << orders.total_price << endl;
+
+    cout << endl;
+}
+
+void Order::get_sales_report()
+{
+    cout << "Name of Sales Associate: ";
+    string sales_asso;
+    getline(cin,sales_asso);
+    cout << endl;
+
+    int j = order_list.size();
+    for(int i = 0; i < j; i++)
+    {
+       int sales_by_asso;
+       double rev_by_asso;
+       int units_by_asso;
+       if(sales_asso == order_list[i].sales_person)
+       {
+           sales_by_asso++;
+           rev_by_asso += order_list[i].total_price;
+           units_by_asso += order_list[i].num_of_robots;
+       }
+
+    }
+
+
+}

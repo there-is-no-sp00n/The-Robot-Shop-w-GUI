@@ -11,7 +11,7 @@ class Order
         void order_robot(Robot);
         void get_tot_price(double);
 
-        void pres_bill_of_sale();
+        void view_bill_of_sale();
 
         void get_sales_report();
     protected:
