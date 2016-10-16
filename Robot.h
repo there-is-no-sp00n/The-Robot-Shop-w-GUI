@@ -22,6 +22,8 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
 
         void tot_weight_cost( int []);
 
+        double get_retail(Robot, int);
+
     private:
         struct robo_bobo
         {

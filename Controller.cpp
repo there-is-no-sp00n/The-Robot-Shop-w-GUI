@@ -17,6 +17,7 @@ void Controller::run_prog()
         cout << "Press 2 to view components" << endl;
         cout << "Press 3 to create robot" << endl;
         cout << "Press 4 to view robot" << endl;
+        cout << "Press 5 to order an robot" << endl;
         cout << "Press 0 to exit"<< endl;
         cout << "What is your choice? ";
         int user_choice;

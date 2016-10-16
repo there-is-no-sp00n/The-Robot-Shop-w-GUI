@@ -399,6 +399,7 @@ void Robot::print_all_models()
     {
         cout << endl;
 
+        cout << "Robot # " << i << endl;
         cout << "Model Name: " << hill[i].model_name << endl;
         cout << "Model Num: " << hill[i].model_num << endl;
         cout << "Weight: " << hill[i].final_weight << endl;
@@ -487,4 +488,9 @@ void Robot::tot_weight_cost(int choice[])
         robo_cop.final_cost += (num_bat*robo_cop.power_af.ahoy.comp_cost);
     }
 
+}
+
+double Robot::get_retail(Robot obj, int i)
+{
+    return obj.hill[i].retail_price;
 }
