@@ -8,6 +8,7 @@ Order::Order()
 void Order::order_robot(Robot robo)
 {
     cout << "Who is the Sales Associate? ";
+    cin.ignore();
     getline(cin, orders.sales_person);
     cout << endl;
 
@@ -88,7 +89,7 @@ void Order::view_bill_of_sale()
     cout << "# of Robots ordered: " << orders.num_of_robots << endl;
     for (int i = 0; i < orders.num_of_robots; i++)
     {
-        cout << "**Robot Model # " << i << ": " << orders.type_of_robot[i] << endl;
+        cout << "**Robot Model # " << i + 1 << ": " << orders.type_of_robot[i] << endl;
     }
     cout << "Total Price: " << orders.total_price << endl;
 
