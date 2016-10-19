@@ -10,8 +10,9 @@ class Order
 
         void order_robot(Robot);
         void get_tot_price(double);
+        void get_tot_weight(double);
 
-        void view_bill_of_sale();
+        void view_bill_of_sale(Robot);
 
         void get_sales_report();
     protected:
@@ -24,7 +25,8 @@ class Order
             string cust_name;
 
             int num_of_robots;
-            double total_price;
+            double total_price = 0;
+            double total_weight = 0;
 
             vector <int> type_of_robot;
         };

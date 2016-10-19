@@ -17,6 +17,8 @@ void Controller::run_prog()
         //cout << "Press 1 if PRODUCTION MANAGER" << endl;
         //cout << "Press 2 if CUSTOMER" << endl;
         //cout << "Press 3 if SALES ASSOCIATE" << endl;
+        cout << "*** MAIN MENU ***" << endl;
+        cout << endl;
 
         cout << "Press 1 to make robot components" << endl;
         cout << "Press 2 to view components" << endl;
@@ -57,8 +59,10 @@ void Controller::run_prog()
 
         if (user_choice == 6)
         {
-            obj_1.view_bill_of_sale();
+            obj_1.view_bill_of_sale(obj);
         }
+
+
 
         if(user_choice == 0)
         {

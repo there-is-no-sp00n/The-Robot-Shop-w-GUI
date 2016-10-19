@@ -10,6 +10,8 @@ void Robot::create_comp()
     int flag = 1;
     while (flag)
     {
+        cout << "### COMPONENTS MENU ###" << endl;
+        cout << endl;
 
         cout << "Enter type of component" << endl;
         cout << "Press 0 for HEAD" << endl;
@@ -83,8 +85,11 @@ void Robot::set_robot()
     user_choice[2] = 0;
     user_choice[3] = 0;
     user_choice[4] = 0;
+
     while (counter > 0)
     {
+        cout << "### CREATE ROBOT MENU ###" << endl;
+        cout << endl;
 
         cout << "Enter type of component you wish to add" << endl;
         cout << "Press 0 for HEAD" << endl;
@@ -127,6 +132,7 @@ void Robot::set_robot()
                 robo_cop.noggin = all_head[user];
                 user_choice[0] = 1;
                 cout << endl;
+                counter --;
             }
 
             else
@@ -159,6 +165,7 @@ void Robot::set_robot()
                 cin >> user;
                 robo_cop.robo_t = all_torso[user];
                 user_choice[1] = 1;
+                counter--;
             }
             else
             {
@@ -214,6 +221,7 @@ void Robot::set_robot()
                 cin >> user;
                 robo_cop.second_arm = all_arm[user];
                 user_choice[2] = 2;
+                counter--;
             }
             else
             {
@@ -246,6 +254,7 @@ void Robot::set_robot()
                 cin >> user;
                 robo_cop.loco_coco = all_loco[user];
                 user_choice[3] = 1;
+                counter--;
             }
 
             else
@@ -281,7 +290,8 @@ void Robot::set_robot()
                 int user;
                 cin >> user;
                 robo_cop.power_af = all_bat[user];
-                user_choice[4]++;
+                user_choice[4] = 1;
+                counter --;
             }
 
             else
@@ -293,37 +303,78 @@ void Robot::set_robot()
 
         }
 
-        else if(part_type == 5 || counter == 1)
+        else if(part_type == 5 || counter == 0)
         {
+            int sum = 0;
+            for(auto& num:user_choice)
+            {
+                sum += num;
+            }
+
+            if(sum == 0)
+            {
+                cout << "Did not add any parts!" << endl;
+                cout << endl;
+                break;
+            }
+
+
             cout << "Done with Robot!" << endl;
             cout << endl;
+            cout << "What is the robot's model name? ";
+            cin >> robo_cop.model_name;
+            cout << endl;
+
+            cout << "What is the robot's model number? ";
+            cin >> robo_cop.model_num;
+            cout << endl;
+            robo_cop.final_weight = 0;
+            robo_cop.final_cost = 0;
+
+            tot_weight_cost(user_choice);
+
+            cout << "Total Cost Is: " << robo_cop.final_cost << endl;
+            cout << "What is your retail price for this robot model? ";
+            cin >> robo_cop.retail_price;
+
+            hill.push_back(robo_cop);
             break;
         }
 
-        counter--;
+        if (counter == 0)
+        {
+            cout << "Done with Robot!" << endl;
+            cout << endl;
+            cout << "What is the robot's model name? ";
+            cin >> robo_cop.model_name;
+            cout << endl;
+
+            cout << "What is the robot's model number? ";
+            cin >> robo_cop.model_num;
+            cout << endl;
+            robo_cop.final_weight = 0;
+            robo_cop.final_cost = 0;
+
+            tot_weight_cost(user_choice);
+
+            cout << "Total Cost Is: " << robo_cop.final_cost << endl;
+            cout << "What is your retail price for this robot model? ";
+            cin >> robo_cop.retail_price;
+
+            hill.push_back(robo_cop);
+            break;
+        }
+
+        //cout << "Counter: " << counter << endl;
     }
 
-    cout << "What is the robot's model name? ";
-    cin >> robo_cop.model_name;
-    cout << endl;
-
-    cout << "What is the robot's model number? ";
-    cin >> robo_cop.model_num;
-    cout << endl;
-    robo_cop.final_weight = 0;
-    robo_cop.final_cost = 0;
-
-    tot_weight_cost(user_choice);
-
-    cout << "Total Cost Is: " << robo_cop.final_cost << endl;
-    cout << "What is your retail price for this robot model? ";
-    cin >> robo_cop.retail_price;
-
-    hill.push_back(robo_cop);
 }
 
 void Robot::view_comp()
 {
+    cout << "### LIST OF COMPONENTS ###" << endl;
+    //cout << endl;
+
     int i;
     int j = all_head.size();
     for (i = 0; i < j; i++)
@@ -392,8 +443,11 @@ void Robot::view_comp()
 
 void Robot::print_all_models()
 {
+    cout << "### ROBOT LIST ###" << endl;
+    cout << endl;
+
     int siz = hill.size();
-    cout << siz << endl;
+    //cout << siz << endl;
 
     for (int i = 0; i  < siz; i++)
     {
@@ -493,4 +547,9 @@ void Robot::tot_weight_cost(int choice[])
 double Robot::get_retail(Robot obj, int i)
 {
     return obj.hill[i].retail_price;
+}
+
+double Robot::get_weight(Robot obj, int i)
+{
+    return obj.hill[i].final_weight;
 }

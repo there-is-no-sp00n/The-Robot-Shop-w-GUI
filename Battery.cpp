@@ -7,7 +7,7 @@ Battery::Battery()
 
 void Battery::set_bat()
 {
-    cout << "How much energy in the battery? ";
+    cout << "How much energy in the battery (in kWh)? ";
     cin >>energy;
     cout << endl;
 }

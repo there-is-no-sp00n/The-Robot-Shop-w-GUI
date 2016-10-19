@@ -22,7 +22,7 @@ void Components::set_comp(int type)
     cin >> ahoy.comp_part_num;
     cout << endl;
 
-    cout << "What is the weight of the component? ";
+    cout << "What is the weight of the component (in KG)? ";
     cin >> ahoy.comp_weight;
     cout << endl;
 

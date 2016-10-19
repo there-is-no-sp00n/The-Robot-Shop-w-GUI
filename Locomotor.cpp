@@ -9,11 +9,11 @@ Locomotor::Locomotor()
 
 void Locomotor::set_loco()
 {
-    cout << "What is the maximum speed of the robot? ";
+    cout << "What is the maximum speed of the robot (in MPH)? ";
     cin >> max_speed;
     cout << endl;
 
-    cout << "What is the power consumption of the robot? ";
+    cout << "What is the power consumption of the robot (in Watts)? ";
     cin >> pow_eaten;
     cout << endl;
 }

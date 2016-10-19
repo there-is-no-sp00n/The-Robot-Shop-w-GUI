@@ -7,7 +7,7 @@ Arm::Arm()
 
 void Arm::set_arm()
 {
-    cout << "How much power does the arm consume? ";
+    cout << "How much power does the arm consume (in Watts)? ";
     cin >> power_con;
     cout << endl;
 }

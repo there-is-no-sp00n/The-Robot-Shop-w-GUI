@@ -7,6 +7,9 @@ Order::Order()
 
 void Order::order_robot(Robot robo)
 {
+    cout << "$$$ ORDER MENU $$$" << endl;
+    cout << endl;
+
     cout << "Who is the Sales Associate? ";
     cin.ignore();
     getline(cin, orders.sales_person);
@@ -66,6 +69,7 @@ void Order::order_robot(Robot robo)
     for (int i = 0; i < orders.num_of_robots; i++)
     {
         get_tot_price(robo.get_retail(robo, orders.type_of_robot[i]));
+        get_tot_weight(robo.get_weight(robo, orders.type_of_robot[i]));
     }
 
 
@@ -79,7 +83,12 @@ void Order::get_tot_price(double retail_price)
     orders.total_price += retail_price;
 }
 
-void Order::view_bill_of_sale()
+void Order::get_tot_weight(double weight)
+{
+    orders.total_weight += weight;
+}
+
+void Order::view_bill_of_sale(Robot robo)
 {
     cout << endl;
 
@@ -87,28 +96,37 @@ void Order::view_bill_of_sale()
     cout << "Customer Number: " << orders.cust_name << endl;
     cout << "Order Number: " << orders.order_num << endl;
     cout << "# of Robots ordered: " << orders.num_of_robots << endl;
+
     for (int i = 0; i < orders.num_of_robots; i++)
     {
-        cout << "**Robot Model # " << i + 1 << ": " << orders.type_of_robot[i] << endl;
+        cout << "**Ordered robot # " << i + 1 << " is Robot Number: " << orders.type_of_robot[i] << endl;
     }
-    cout << "Total Price: " << orders.total_price << endl;
+    double tax = 0.0825*orders.total_price;
+    double shipping = 5*orders.total_weight;
+    cout << "Subtotal: " << orders.total_price << endl;
+    cout << "Tax: " << tax << endl;
+    cout << "Shipping @ $5 per KG: " << shipping << endl;
+    cout << "Total: " << orders.total_price + tax + shipping << endl;
 
     cout << endl;
 }
 
 void Order::get_sales_report()
 {
+    cout << "$$$ SALES REPORT MENU $$$" << endl;
+    cout << endl;
     cout << "Name of Sales Associate: ";
     string sales_asso;
+    cin.ignore();
     getline(cin,sales_asso);
     cout << endl;
 
     int j = order_list.size();
     for(int i = 0; i < j; i++)
     {
-       int sales_by_asso;
-       double rev_by_asso;
-       int units_by_asso;
+       int sales_by_asso = 0;
+       double rev_by_asso = 0;
+       int units_by_asso = 0;
        if(sales_asso == order_list[i].sales_person)
        {
            sales_by_asso++;
