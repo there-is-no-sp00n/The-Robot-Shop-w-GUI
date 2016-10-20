@@ -70,7 +70,6 @@ void Order::order_robot(Robot robo)
     orders.num_of_robots = counter;
     for (int i = 0; i < counter; i++)
     {
-        cout << "i =" << i << endl;
         orders.total_price += get_tot_price(robo.get_retail(robo, orders.type_of_robot[i]));
         get_tot_weight(robo.get_weight(robo, orders.type_of_robot[i]));
     }
@@ -114,7 +113,6 @@ void Order::view_order_by_sa()
     }
 
     int j = order_list.size();
-    cout << "J: " << j << endl;
     for (int i = 0; i < j; i++)
     {
         int sp_ascii = 0;
@@ -178,7 +176,6 @@ void Order::view_all_orders()
 
 void Order::view_bill_of_sale(Robot robo)
 {
-    //int j = order_list.size();
     cout << "$$$ CUSTOMER BILL OF SALE MENU $$$" << endl;
     cout << endl;
     cout << "What is the customer's name? ";
@@ -190,7 +187,6 @@ void Order::view_bill_of_sale(Robot robo)
     while (cust_name[k] != '\0')
     {
         c_ascii += cust_name[k];
-        //cout << "SP ASCII: " << sp_ascii << endl;
         k++;
     }
 
@@ -202,7 +198,6 @@ void Order::view_bill_of_sale(Robot robo)
         while (order_list[i].cust_name[k] != '\0')
         {
             c1_ascii += order_list[i].cust_name[k];
-            //cout << "SP ASCII: " << sp_ascii << endl;
             k++;
         }
 
@@ -212,7 +207,6 @@ void Order::view_bill_of_sale(Robot robo)
 
             cout << "Sales Associate: " << order_list[i].sales_person << endl;
             cout << "Date of Sale: " << order_list[i].date_of_sale << endl;
-            //cout << "Customer Name: " << order_list[i].cust_name << endl;
             cout << "Order Number: " << order_list[i].order_num << endl;
             cout << "# of Robots ordered: " << order_list[i].num_of_robots << endl;
 
