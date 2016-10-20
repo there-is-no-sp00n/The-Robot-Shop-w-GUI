@@ -43,6 +43,8 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
             Arm first_arm;
             Arm second_arm;
             Head noggin;
+
+            int parts[6] = {0};
         };
 
         robo_bobo robo_cop;

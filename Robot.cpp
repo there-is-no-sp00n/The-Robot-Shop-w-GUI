@@ -131,6 +131,7 @@ void Robot::set_robot()
                 cin >> user;
                 robo_cop.noggin = all_head[user];
                 user_choice[0] = 1;
+                robo_cop.parts[0] = 1;
                 cout << endl;
                 counter --;
             }
@@ -165,6 +166,7 @@ void Robot::set_robot()
                 cin >> user;
                 robo_cop.robo_t = all_torso[user];
                 user_choice[1] = 1;
+                robo_cop.parts[1] = 1;
                 counter--;
             }
             else
@@ -198,6 +200,7 @@ void Robot::set_robot()
                 cin >> user;
                 robo_cop.first_arm = all_arm[user];
                 user_choice[2] = 1;
+                robo_cop.parts[2] = 1;
                 continue;
             }
 
@@ -221,6 +224,7 @@ void Robot::set_robot()
                 cin >> user;
                 robo_cop.second_arm = all_arm[user];
                 user_choice[2] = 2;
+                robo_cop.parts[2] = 1;
                 counter--;
             }
             else
@@ -254,6 +258,7 @@ void Robot::set_robot()
                 cin >> user;
                 robo_cop.loco_coco = all_loco[user];
                 user_choice[3] = 1;
+                robo_cop.parts[3] = 1;
                 counter--;
             }
 
@@ -291,6 +296,7 @@ void Robot::set_robot()
                 cin >> user;
                 robo_cop.power_af = all_bat[user];
                 user_choice[4] = 1;
+                robo_cop.parts[4] = 1;
                 counter --;
             }
 
@@ -365,11 +371,17 @@ void Robot::set_robot()
             break;
         }
 
+        //robo_cop.noggin.ahoy.comp_cost = 0;
+        //robo_cop.robo_t.ahoy.comp_cost = 0;
+        //robo_cop.first_arm.ahoy.comp_cost = 0;
+        //robo_cop.second_arm.ahoy.comp_cost = 0;
+        //robo_cop.loco_coco.ahoy.comp_cost = 0;
+        //robo_cop.power_af.ahoy.comp_cost = 0;
+
         //cout << "Counter: " << counter << endl;
     }
 
 }
-
 void Robot::view_comp()
 {
     cout << "### LIST OF COMPONENTS ###" << endl;
@@ -500,7 +512,7 @@ void Robot::detail_robot_view()
         cout << "Cost: " << hill[i].final_cost << endl;
         cout << "Retail Price: " << hill[i].retail_price << endl;
 
-        if (hill[i].noggin.ahoy.comp_cost != 0)
+        if (hill[i].parts[0] != 0)
         {
             cout << endl;
             cout << "Head Name: " << hill[i].noggin.ahoy.comp_name << endl;
@@ -510,7 +522,7 @@ void Robot::detail_robot_view()
             cout << endl;
         }
 
-        if (hill[i].robo_t.ahoy.comp_cost != 0)
+        if (hill[i].parts[1] != 0)
         {
             cout << endl;
             cout << "Torso Name: " << hill[i].robo_t.ahoy.comp_name << endl;
@@ -521,31 +533,42 @@ void Robot::detail_robot_view()
             cout << endl;
         }
 
-        if (hill[i].first_arm.ahoy.comp_cost != 0)
+        if (hill[i].parts[2] == 1 || hill[i].parts[2] == 2)
         {
-            cout << endl;
-            //cout << "Arm Vector Size: " << all_arm.size() << endl;
-            cout << "1st Arm Name: " << hill[i].first_arm.ahoy.comp_name << endl;
-            cout << "1st Arm Number: " << hill[i].first_arm.ahoy.comp_part_num << endl;
-            cout << "1st Arm Weight: " << hill[i].first_arm.ahoy.comp_weight << endl;
-            cout << "1st Arm Cost: " << hill[i].first_arm.ahoy.comp_cost << endl;
-            cout << "1st Arm Power: " << hill[i].first_arm.get_arm_power(hill[i].first_arm) << endl;
-            cout << endl;
+            if (hill[i].parts[2] == 1)
+            {
+                cout << endl;
+                //cout << "Arm Vector Size: " << all_arm.size() << endl;
+                cout << "1st Arm Name: " << hill[i].first_arm.ahoy.comp_name << endl;
+                cout << "1st Arm Number: " << hill[i].first_arm.ahoy.comp_part_num << endl;
+                cout << "1st Arm Weight: " << hill[i].first_arm.ahoy.comp_weight << endl;
+                cout << "1st Arm Cost: " << hill[i].first_arm.ahoy.comp_cost << endl;
+                cout << "1st Arm Power: " << hill[i].first_arm.get_arm_power(hill[i].first_arm) << endl;
+                cout << endl;
+            }
+            if (hill[i].parts[6] == 2)
+            {
+                cout << endl;
+                //cout << "Arm Vector Size: " << all_arm.size() << endl;
+                cout << "2nd Arm Name: " << hill[i].second_arm.ahoy.comp_name << endl;
+                cout << "2nd Arm Number: " << hill[i].second_arm.ahoy.comp_part_num << endl;
+                cout << "2nd Arm Weight: " << hill[i].second_arm.ahoy.comp_weight << endl;
+                cout << "2nd Arm Cost: " << hill[i].second_arm.ahoy.comp_cost << endl;
+                cout << "2nd Arm Power: " << hill[i].second_arm.get_arm_power(hill[i].second_arm) << endl;
+                cout << endl;
+                cout << endl;
+                //cout << "Arm Vector Size: " << all_arm.size() << endl;
+                cout << "1st Arm Name: " << hill[i].first_arm.ahoy.comp_name << endl;
+                cout << "1st Arm Number: " << hill[i].first_arm.ahoy.comp_part_num << endl;
+                cout << "1st Arm Weight: " << hill[i].first_arm.ahoy.comp_weight << endl;
+                cout << "1st Arm Cost: " << hill[i].first_arm.ahoy.comp_cost << endl;
+                cout << "1st Arm Power: " << hill[i].first_arm.get_arm_power(hill[i].first_arm) << endl;
+                cout << endl;
+            }
+
         }
 
-        if (hill[i].second_arm.ahoy.comp_cost != 0)
-        {
-            cout << endl;
-            //cout << "Arm Vector Size: " << all_arm.size() << endl;
-            cout << "2nd Arm Name: " << hill[i].second_arm.ahoy.comp_name << endl;
-            cout << "2nd Arm Number: " << hill[i].second_arm.ahoy.comp_part_num << endl;
-            cout << "2nd Arm Weight: " << hill[i].second_arm.ahoy.comp_weight << endl;
-            cout << "2nd Arm Cost: " << hill[i].second_arm.ahoy.comp_cost << endl;
-            cout << "2nd Arm Power: " << hill[i].second_arm.get_arm_power(hill[i].second_arm) << endl;
-            cout << endl;
-        }
-
-        if (hill[i].loco_coco.ahoy.comp_cost != 0)
+        if (hill[i].parts[3] != 0)
         {
             cout << endl;
             cout << "Locomotor Name: " << hill[i].loco_coco.ahoy.comp_name << endl;
@@ -557,7 +580,7 @@ void Robot::detail_robot_view()
             cout << endl;
         }
 
-        if (hill[i].power_af.ahoy.comp_cost != 0)
+        if (hill[i].parts[4] != 0)
         {
             cout << endl;
             cout << "Battery Name: " << hill[i].power_af.ahoy.comp_name << endl;
@@ -567,6 +590,9 @@ void Robot::detail_robot_view()
             cout << "Battery Power: " << hill[i].power_af.get_battery(hill[i].power_af) << endl;
             cout << endl;
         }
+
+
+        //cout << endl;
 
         cout << "=============NEW ROBOT==============" << endl;
 
@@ -585,6 +611,7 @@ void Robot::tot_weight_cost(int choice[])
     {
         robo_cop.final_weight += 0;
         robo_cop.final_cost += 0;
+        robo_cop.parts[0] = 0;
     }
 
     else if (choice[0] == 1)
@@ -597,6 +624,7 @@ void Robot::tot_weight_cost(int choice[])
     {
         robo_cop.final_weight += 0;
         robo_cop.final_cost += 0;
+        robo_cop.parts[1] = 0;
     }
 
     else if (choice[1] == 1)
@@ -609,6 +637,7 @@ void Robot::tot_weight_cost(int choice[])
     {
         robo_cop.final_weight += 0;
         robo_cop.final_cost += 0;
+        robo_cop.parts[2] = 0;
     }
 
     else if ((choice[2] == 1) || (choice[2] == 2))
@@ -626,6 +655,7 @@ void Robot::tot_weight_cost(int choice[])
         {
             robo_cop.final_weight += robo_cop.first_arm.ahoy.comp_weight;
             robo_cop.final_cost += robo_cop.first_arm.ahoy.comp_cost;
+            robo_cop.parts[6] = 0;
         }
     }
 
@@ -633,6 +663,7 @@ void Robot::tot_weight_cost(int choice[])
     {
         robo_cop.final_weight += 0;
         robo_cop.final_cost += 0;
+        robo_cop.parts[3] = 0;
     }
 
     else if (choice[3] == 1)
@@ -645,6 +676,7 @@ void Robot::tot_weight_cost(int choice[])
     {
         robo_cop.final_weight += 0;
         robo_cop.final_cost += 0;
+        robo_cop.parts[4] = 0;
     }
 
     else if (choice[4] == 1)

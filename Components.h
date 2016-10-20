@@ -23,7 +23,7 @@ class Components
             string comp_part_num;
             string comp_desc;
 
-            double comp_weight;
+            double comp_weight = 0;
             double comp_cost = 0;
         };
 
