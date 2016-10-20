@@ -568,8 +568,7 @@ void Robot::detail_robot_view()
             cout << endl;
         }
 
-
-
+        cout << "=============NEW ROBOT==============" << endl;
 
 
     }
