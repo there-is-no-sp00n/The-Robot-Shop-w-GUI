@@ -403,7 +403,7 @@ void Robot::view_comp()
     for (i = 0; i < j; i++)
     {
         cout << endl;
-        cout << "Arm Vector Size: " << all_arm.size() << endl;
+        //cout << "Arm Vector Size: " << all_arm.size() << endl;
         cout << "Arm Name: " << all_arm[i].ahoy.comp_name << endl;
         cout << "Arm Number: " << all_arm[i].ahoy.comp_part_num << endl;
         cout << "Arm Weight: " << all_arm[i].ahoy.comp_weight << endl;
@@ -443,11 +443,51 @@ void Robot::view_comp()
 
 void Robot::print_all_models()
 {
-    cout << "### ROBOT LIST ###" << endl;
+    cout << "### ROBOT VIEW MENU ###" << endl;
     cout << endl;
+    cout << "Press 1 for detailed view" << endl;
+    cout << "Press 0 for regular view" << endl;
+    int choice;
+    cout << "What is your choice? ";
+    cin >> choice;
+    cout << endl;
+    int siz = hill.size();
 
+    if (choice == 0)
+    {
+        cout << "### ROBOT LIST ###" << endl;
+        cout << endl;
+
+        for (int i = 0; i  < siz; i++)
+        {
+            cout << endl;
+
+            cout << "Robot # " << i << endl;
+            cout << "Model Name: " << hill[i].model_name << endl;
+            cout << "Model Num: " << hill[i].model_num << endl;
+            cout << "Weight: " << hill[i].final_weight << endl;
+            cout << "Cost: " << hill[i].final_cost << endl;
+            cout << "Retail Price: " << hill[i].retail_price << endl;
+
+            cout << endl;
+        }
+    }
+
+    else if (choice == 1)
+    {
+        for (int i = 0; i < siz; i++)
+        {
+            detail_robot_view();
+        }
+    }
+}
+
+void Robot::detail_robot_view()
+{
     int siz = hill.size();
     //cout << siz << endl;
+
+    cout << "### DETAILED ROBOT LIST ###" << endl;
 
     for (int i = 0; i  < siz; i++)
     {
@@ -460,8 +500,82 @@ void Robot::print_all_models()
         cout << "Cost: " << hill[i].final_cost << endl;
         cout << "Retail Price: " << hill[i].retail_price << endl;
 
-        cout << endl;
+        if (hill[i].noggin.ahoy.comp_cost != 0)
+        {
+            cout << endl;
+            cout << "Head Name: " << hill[i].noggin.ahoy.comp_name << endl;
+            cout << "Head Number: " << hill[i].noggin.ahoy.comp_part_num << endl;
+            cout << "Head Weight: " << hill[i].noggin.ahoy.comp_weight << endl;
+            cout << "Head Cost: " << hill[i].noggin.ahoy.comp_cost << endl;
+            cout << endl;
+        }
+
+        if (hill[i].robo_t.ahoy.comp_cost != 0)
+        {
+            cout << endl;
+            cout << "Torso Name: " << hill[i].robo_t.ahoy.comp_name << endl;
+            cout << "Torso Number: " << hill[i].robo_t.ahoy.comp_part_num << endl;
+            cout << "Torso Weight: " << hill[i].robo_t.ahoy.comp_weight << endl;
+            cout << "Torso Cost: " << hill[i].robo_t.ahoy.comp_cost << endl;
+            cout << "Torso Battery: " << hill[i].robo_t.get_total_battery(hill[i].robo_t) << endl;
+            cout << endl;
+        }
+
+        if (hill[i].first_arm.ahoy.comp_cost != 0)
+        {
+            cout << endl;
+            //cout << "Arm Vector Size: " << all_arm.size() << endl;
+            cout << "1st Arm Name: " << hill[i].first_arm.ahoy.comp_name << endl;
+            cout << "1st Arm Number: " << hill[i].first_arm.ahoy.comp_part_num << endl;
+            cout << "1st Arm Weight: " << hill[i].first_arm.ahoy.comp_weight << endl;
+            cout << "1st Arm Cost: " << hill[i].first_arm.ahoy.comp_cost << endl;
+            cout << "1st Arm Power: " << hill[i].first_arm.get_arm_power(hill[i].first_arm) << endl;
+            cout << endl;
+        }
+
+        if (hill[i].second_arm.ahoy.comp_cost != 0)
+        {
+            cout << endl;
+            //cout << "Arm Vector Size: " << all_arm.size() << endl;
+            cout << "2nd Arm Name: " << hill[i].second_arm.ahoy.comp_name << endl;
+            cout << "2nd Arm Number: " << hill[i].second_arm.ahoy.comp_part_num << endl;
+            cout << "2nd Arm Weight: " << hill[i].second_arm.ahoy.comp_weight << endl;
+            cout << "2nd Arm Cost: " << hill[i].second_arm.ahoy.comp_cost << endl;
+            cout << "2nd Arm Power: " << hill[i].second_arm.get_arm_power(hill[i].second_arm) << endl;
+            cout << endl;
+        }
+
+        if (hill[i].loco_coco.ahoy.comp_cost != 0)
+        {
+            cout << endl;
+            cout << "Locomotor Name: " << hill[i].loco_coco.ahoy.comp_name << endl;
+            cout << "Locomotor Number: " << hill[i].loco_coco.ahoy.comp_part_num << endl;
+            cout << "Locomotor Weight: " << hill[i].loco_coco.ahoy.comp_weight << endl;
+            cout << "Locomotor Cost: " << hill[i].loco_coco.ahoy.comp_cost << endl;
+            cout << "Locomotor Max Speed: " << hill[i].loco_coco.get_max_speed(hill[i].loco_coco) << endl;
+            cout << "Locomotor Power Consumption: " << hill[i].loco_coco.get_pow_eat(hill[i].loco_coco) << endl;
+            cout << endl;
+        }
+
+        if (hill[i].power_af.ahoy.comp_cost != 0)
+        {
+            cout << endl;
+            cout << "Battery Name: " << hill[i].power_af.ahoy.comp_name << endl;
+            cout << "Battery Number: " << hill[i].power_af.ahoy.comp_part_num << endl;
+            cout << "Battery Weight: " << hill[i].power_af.ahoy.comp_weight << endl;
+            cout << "Battery Cost: " << hill[i].power_af.ahoy.comp_cost << endl;
+            cout << "Battery Power: " << hill[i].power_af.get_battery(hill[i].power_af) << endl;
+            cout << endl;
+        }
+
+
+
+
+
     }
+
+
+
 
 }
 

@@ -16,6 +16,8 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
 
         void print_all_models();
 
+        void detail_robot_view();
+
         void create_comp();
 
         void view_comp();

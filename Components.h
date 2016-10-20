@@ -24,7 +24,7 @@ class Components
             string comp_desc;
 
             double comp_weight;
-            double comp_cost;
+            double comp_cost = 0;
         };
 
         comp ahoy;
