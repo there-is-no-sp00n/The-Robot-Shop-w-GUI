@@ -4,6 +4,7 @@
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
 #include <FL/Fl_Menu_Bar.H>
+#include <FL/Fl_Box.H>
 #include <FL/Fl_Input.H>
 #include <FL/Fl_Multiline_Input.H>
 
@@ -16,7 +17,7 @@ class View
 	public:
 		View();
 
-		void show_the_goods();
+		int show_the_goods();
 	protected:
 	private:
 };
