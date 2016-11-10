@@ -7,6 +7,7 @@
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Input.H>
 #include <FL/Fl_Multiline_Input.H>
+#include "Robot_Part_Dialog.h"
 
 #include <iostream>
 

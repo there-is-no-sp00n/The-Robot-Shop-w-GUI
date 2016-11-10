@@ -41,6 +41,8 @@ int View::show_the_goods()
 
 	menubar->menu(menuitems);
 
+	Robot_Part_Dialog obj;
+
 	win->end();
 	win->show();
 
