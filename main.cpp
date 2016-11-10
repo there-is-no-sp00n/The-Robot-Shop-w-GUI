@@ -1,6 +1,7 @@
 #include <iostream>
-//#include "Robot.h"
+#include "View.h"
 #include "Controller.h"
+
 
 using namespace std;
 

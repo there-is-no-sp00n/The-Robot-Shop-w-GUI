@@ -102,29 +102,13 @@ void Order::view_order_by_sa()
     cin.ignore();
     getline(cin,sales_asso);
     cout << endl;
-    int sa_ascii = 0;
 
-    int k = 0;
-
-    while (sales_asso[k] != '\0')
-    {
-        sa_ascii += sales_asso[k];
-        k++;
-    }
-
-    int j = order_list.size();
-    for (int i = 0; i < j; i++)
-    {
-        int sp_ascii = 0;
-        k = 0;
-        while (order_list[i].sales_person[k] != '\0')
-        {
-            sp_ascii += order_list[i].sales_person[k];
-            k++;
-        }
-        if (sa_ascii == sp_ascii)
-        {
-            cout << endl;
+	int j = order_list.size();
+	for (int i = 0; i < j; i++)
+	{
+		if (sales_asso.compare(order_list[i].sales_person) == 0)
+		{
+			cout << endl;
             cout << "Sales Associate: " << order_list[i].sales_person << endl;
 
             cout << "Date of Sale: " << order_list[i].date_of_sale << endl;
@@ -140,9 +124,13 @@ void Order::view_order_by_sa()
             cout << "Total: " << order_list[i].total_price + tax + shipping << endl;
 
             cout << endl;
-        }
+		}
 
-    }
+	}
+
+	
+
+    
 
 }
 
@@ -182,26 +170,11 @@ void Order::view_bill_of_sale(Robot robo)
     cin.ignore();
     string cust_name;
     getline(cin, cust_name);
-    int k = 0;
-    int c_ascii = 0;
-    while (cust_name[k] != '\0')
-    {
-        c_ascii += cust_name[k];
-        k++;
-    }
 
     int j = order_list.size();
     for(int i = 0; i < j; i++)
     {
-        int c1_ascii = 0;
-        k = 0;
-        while (order_list[i].cust_name[k] != '\0')
-        {
-            c1_ascii += order_list[i].cust_name[k];
-            k++;
-        }
-
-        if (c_ascii == c1_ascii)
+		if (cust_name.compare(order_list[i].cust_name) == 0)
         {
             cout << endl;
 
@@ -232,36 +205,20 @@ void Order::get_sales_report()
     cin.ignore();
     getline(cin,sales_asso);
     cout << endl;
-    int sa_ascii = 0;
-
-    int k = 0;
-
-    while (sales_asso[k] != '\0')
-    {
-        sa_ascii += sales_asso[k];
-        k++;
-    }
+    
 
     int sales_by_asso = 0;
     double rev_by_asso = 0;
     int units_by_asso = 0;
+
     int j = order_list.size();
     for(int i = 0; i < j; i++)
     {
-        k = 0;
-        int sp_ascii = 0;
-        while (order_list[i].sales_person[k] != '\0')
-        {
-            sp_ascii += order_list[i].sales_person[k];
-            k++;
-        }
-
-       if (sa_ascii == sp_ascii)
+		if (sales_asso.compare(order_list[i].sales_person) == 0)
        {
            sales_by_asso++;
            rev_by_asso += order_list[i].total_price;
            units_by_asso += order_list[i].num_of_robots;
-
        }
 
 

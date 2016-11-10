@@ -2,7 +2,7 @@
 #define ORDER_H
 
 #include "Robot.h"
-//#include <string.h>
+#include <string.h>
 //#include <cstring>
 class Order
 {
@@ -28,9 +28,9 @@ class Order
             string date_of_sale;
             string cust_name;
 
-            int num_of_robots = 0;
-            double total_price = 0;
-            double total_weight = 0;
+            int num_of_robots;
+            double total_price;
+            double total_weight;
 
             vector <int> type_of_robot;
         };

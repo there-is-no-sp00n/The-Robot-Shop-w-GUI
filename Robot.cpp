@@ -312,9 +312,10 @@ void Robot::set_robot()
         else if(part_type == 5 || counter == 0)
         {
             int sum = 0;
-            for(auto& num:user_choice)
+			//int num;
+            for(int i = 0; i < 5; i++)//for(auto& num:user_choice)
             {
-                sum += num;
+                sum += user_choice[i];
             }
 
             if(sum == 0)

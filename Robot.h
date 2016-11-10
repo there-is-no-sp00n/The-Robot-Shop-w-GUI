@@ -30,9 +30,9 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
     private:
         struct robo_bobo
         {
-            double final_weight = 0;
-            double final_cost = 0;
-            double retail_price = 0;
+            double final_weight;
+            double final_cost;
+            double retail_price;
 
             string model_name;
             string model_num;
@@ -44,7 +44,7 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
             Arm second_arm;
             Head noggin;
 
-            int parts[6] = {0};
+			int parts[6];
         };
 
         robo_bobo robo_cop;
