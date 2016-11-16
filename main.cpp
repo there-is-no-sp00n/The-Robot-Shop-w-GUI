@@ -5,6 +5,8 @@
 
 using namespace std;
 
+
+
 int main()
 {
     //Controller obj;
@@ -15,6 +17,7 @@ int main()
 
 	View obj;
 	obj.show_the_goods();
+	
 
 	return 0;
 }

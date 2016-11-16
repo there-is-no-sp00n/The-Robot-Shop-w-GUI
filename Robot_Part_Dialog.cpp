@@ -15,5 +15,5 @@ Robot_Part_Dialog::Robot_Part_Dialog()
 	dialog->set_non_modal();
 
 	dialog->show();
-	dialog->hide();
+	//dialog->hide();
 }
