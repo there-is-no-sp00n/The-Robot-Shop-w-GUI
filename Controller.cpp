@@ -5,7 +5,7 @@ Controller::Controller()
 
 }
 
-void Controller::run_prog()
+void Controller::run_prog(int choice, int type, string name, string num, double weight, double cost, double pow_con, double max_spd, double pow_eat, int num_bat)
 {
     int flag = 1;
 
@@ -14,9 +14,6 @@ void Controller::run_prog()
 
     while (flag)
     {
-        //cout << "Press 1 if PRODUCTION MANAGER" << endl;
-        //cout << "Press 2 if CUSTOMER" << endl;
-        //cout << "Press 3 if SALES ASSOCIATE" << endl;
         cout << "*** MAIN MENU ***" << endl;
         cout << endl;
 
@@ -32,17 +29,22 @@ void Controller::run_prog()
         cout << "Press 0 to exit"<< endl;
         cout << "What is your choice? ";
         int user_choice;
-        cin >> user_choice;
-        cout << endl;
+        //cin >> user_choice;
+        //cout << endl;
 
+		user_choice = choice;
         if (user_choice == 1)
         {
-            obj.create_comp();
+			cout << "lklklkl" << endl;
+            obj.create_comp(type, name, num, weight, cost, pow_con, max_spd, pow_eat, num_bat);
+			obj.view_comp();
+			break;
         }
 
         if (user_choice == 2)
         {
             obj.view_comp();
+			break;
         }
 
         if (user_choice == 3)

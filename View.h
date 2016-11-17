@@ -10,10 +10,9 @@
 #include <FL/Fl_Widget.H>
 
 #include "Robot_Part_Dialog.h"
+#include "Controller.h"
 
 #include <iostream>
-#include <cctype>
-#include <fstream>
 
 using namespace std;
 
@@ -22,8 +21,7 @@ using namespace std;
 class View
 {
 	public:
-		View();
-		
+		View();		
 		
 
 

@@ -5,7 +5,7 @@ Robot::Robot()
 
 }
 
-void Robot::create_comp()
+void Robot::create_comp(int type, string name, string num, double weight, double cost, double pow_con, double max_spd, double pow_eat, int num_bat)
 {
     int flag = 1;
     while (flag)
@@ -20,10 +20,12 @@ void Robot::create_comp()
         cout << "Press 3 for LOCOMOTOR" << endl;
         cout << "Press 4 for BATTERY" << endl;
         cout << "Press 5 to stop adding more components" << endl;
-        cout << "What is your part type? ";
+        //cout << "What is your part type? ";
         int part_type;
-        cin >> part_type;
-        cout << endl;
+        //cin >> part_type;
+        //cout << endl;
+
+		part_type = type;
 
         if (part_type > 5)
         {
@@ -33,9 +35,10 @@ void Robot::create_comp()
 
         if (part_type == 0)
         {
-            Head obj_head;
-            obj_head.set_comp(0);
+            Head obj_head(name, num, "pol", weight, cost);
+            //obj_head.set_comp(0);
             all_head.push_back(obj_head);
+			break;
         }
 
         if (part_type == 1)
@@ -48,10 +51,11 @@ void Robot::create_comp()
 
         if (part_type == 2)
         {
-            Arm obj_arm;
-            obj_arm.set_comp(2);
-            obj_arm.set_arm();
+            Arm obj_arm(name, num, "pll", weight, cost, pow_con);
+            //obj_arm.set_comp(2);
+            //obj_arm.set_arm();
             all_arm.push_back(obj_arm);
+			break;
         }
 
         if(part_type == 3)

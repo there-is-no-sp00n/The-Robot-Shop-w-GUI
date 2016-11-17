@@ -18,7 +18,7 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
 
         void detail_robot_view();
 
-        void create_comp();
+        void create_comp(int type, string name, string num, double weight, double cost, double pow_con, double max_spd, double pow_eat, int num_bat);
 
         void view_comp();
 

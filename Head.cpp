@@ -2,5 +2,5 @@
 
 Head::Head()
 {
-    //ctor
+    
 }
