@@ -16,7 +16,8 @@ void hide()
 	dialog->hide();
 }
 
-void input()
+//input for head
+void input_head()
 {
 	string nombre, num, wght, cst;
 	double d_wght, d_cst;
@@ -38,6 +39,7 @@ void input()
 	boss.run_prog(1, type, nombre, num, d_wght, d_cst, 0, 0, 0, 0);
 }
 
+//input for arm
 void input_arm()
 {
 	string nombre, num, wght, cst, pow;
@@ -66,14 +68,14 @@ void input_arm()
 void Robot_Part_Dialog::show_comp(int x, Controller obj)
 {
 	boss = obj;
-	//boss.run_prog(x,0,0,0,0,0);
+	boss.run_prog(2,0,0,0,0,0,0,0,0,0);
 }
 
 void create_CB (Fl_Widget* w, void* p)
 {
 	if (type == 0)
 	{
-		input();
+		input_head();
 	}
 
 	if (type == 2)

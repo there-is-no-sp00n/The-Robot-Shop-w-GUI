@@ -19,8 +19,28 @@ void arm_CB (Fl_Widget *w, void *p)
 void view_comp_CB (Fl_Widget *w, void *p)
 {
 	cout << "marimba" << endl;
-	talk.show_comp(2, obj);
+	//talk.show_comp(2, obj);
+	//Fl_Browser *bro = new Fl_Browser(100,100,500,500,"test");
+	//bro->add("One");
+	//bro->add("Two");
+	//bro->activate();
+	//bro->display(100,1);
+	//bro->show();
+	//for (int t = 0; t <= bro->size(); t++)
+	//{
+	//	cout << "marimba 2" << endl;
+	//}
+
+	//Fl_Scrollbar *scro = new Fl_Scrollbar(0, 200, 0, 400, "Label");
+	//scro->redraw();
+	//scro->show();
+
+	Scroll_Window obj7;
+	obj7.show_scroll();
+
+	
 }
+
 View::View()
 {
 
