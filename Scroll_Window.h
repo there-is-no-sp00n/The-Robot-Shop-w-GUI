@@ -3,8 +3,13 @@
 
 #include <FL/Fl_Double_Window.H>
 #include <FL/fl_draw.H>
+#include <FL/Fl_Scrollbar.H>
+#include <FL/Fl_Scroll.H>
+
 #include "View.h"
+
 using namespace std;
+
 
 class Scroll_Window
 {

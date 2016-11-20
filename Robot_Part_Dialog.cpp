@@ -4,7 +4,7 @@ Fl_Input *name, *number, *weight, *cost, *description, *pow_con;
 Fl_Window *dialog;
 int type, mode;
 
-Controller boss;
+Robot robbie;
 
 void show()
 {
@@ -36,7 +36,8 @@ void input_head()
 	cout << d_wght << endl;
 	cout << d_cst << endl;
 
-	boss.run_prog(1, type, nombre, num, d_wght, d_cst, 0, 0, 0, 0);
+	robbie.create_comp (0, nombre, num, d_wght, d_cst, 0, 0, 0, 0);
+	//set_robot(Robbie);
 }
 
 //input for arm
@@ -62,14 +63,15 @@ void input_arm()
 	cout << d_cst << endl;
 	cout << d_pow_con << endl;
 
-	boss.run_prog(1, type, nombre, num, d_wght, d_cst, d_pow_con, 0, 0, 0);
+	robbie.create_comp(1, nombre, num, d_wght, d_cst, d_pow_con, 0, 0, 0);
+	//robo_d_ret = robbie;
 }
 
-void Robot_Part_Dialog::show_comp(int x, Controller obj)
-{
-	boss = obj;
-	boss.run_prog(2,0,0,0,0,0,0,0,0,0);
-}
+//void Robot_Part_Dialog::show_comp(int x, Controller obj, Robot rob)
+//{
+	//boss = obj;
+	//run_prog(rob, 2,0,0,0,0,0,0,0,0,0);
+//}
 
 void create_CB (Fl_Widget* w, void* p)
 {
@@ -96,15 +98,13 @@ Robot_Part_Dialog::Robot_Part_Dialog()
 
 }
 
-void Robot_Part_Dialog::r_dialog(int x, Controller obj_1)
+void Robot_Part_Dialog::r_dialog(int x)
 {
-	boss = obj_1;
 	dialog = new Fl_Window(340, 270, "Robot Part");
 	
 	
 
 	type = x;
-	//mode = y;
 	name = new Fl_Input(120, 10, 210, 25, "Name:");
 	number = new Fl_Input(120, 40, 210, 25, "Number:");
 	weight = new Fl_Input(120, 70, 210, 25, "Weight:");
@@ -123,4 +123,9 @@ void Robot_Part_Dialog::r_dialog(int x, Controller obj_1)
 	dialog->set_non_modal();	
 	show();
 	
+}
+
+Robot Robot_Part_Dialog::get_robot()
+{
+	return robbie;
 }

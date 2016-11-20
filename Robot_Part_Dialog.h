@@ -24,11 +24,13 @@ class Robot_Part_Dialog
 	public:
 		Robot_Part_Dialog();
 
-		void show_comp(int, Controller);
+		void show_comp(int);
 
 		//void show();
 		//void hide();
-		void r_dialog(int, Controller);
+		void r_dialog(int);
+
+		Robot get_robot();
 
 		//string nombre();
 		//{
@@ -45,6 +47,7 @@ class Robot_Part_Dialog
 		//Fl_Input *name, *number, *weight, *cost, *description;
 		Fl_Return_Button *create;
 		Fl_Button *cancel;
+		Robot robo_d_ret;
 };
 
 

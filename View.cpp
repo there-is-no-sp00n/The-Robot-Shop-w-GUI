@@ -1,19 +1,23 @@
 #include "View.h"
 
-Controller obj;
+Robot rob;
 Robot_Part_Dialog talk;
 
 void head_CB (Fl_Widget *w, void *p)
 {
 	cout << "aloha" << endl;
-	talk.r_dialog(0, obj);
-	//obj.run_prog(1, 0);
+		
+	talk.r_dialog(0);
+	rob = talk.get_robot();
+	rob.view_comp();
+	
 }
 
 void arm_CB (Fl_Widget *w, void *p)
 {
 	cout << "hi" << endl;
-	talk.r_dialog(2, obj);
+	talk.r_dialog(2);
+	rob = talk.get_robot();
 }
 
 void view_comp_CB (Fl_Widget *w, void *p)
@@ -35,6 +39,11 @@ void view_comp_CB (Fl_Widget *w, void *p)
 	//scro->redraw();
 	//scro->show();
 
+	//Scroll_Window obj7;
+	//obj7.show_scroll();
+	rob = talk.get_robot();
+	rob.view_comp();
+	
 	Scroll_Window obj7;
 	obj7.show_scroll();
 

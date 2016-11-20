@@ -9,8 +9,6 @@
 #include <FL/Fl_Multiline_Input.H>
 #include <FL/Fl_Widget.H>
 #include <FL/Fl_Browser.H>
-#include <FL/Fl_Scrollbar.H>
-#include <FL/Fl_Scroll.H>
 #include <FL/Fl_Output.H>
 
 #include "Robot_Part_Dialog.h"

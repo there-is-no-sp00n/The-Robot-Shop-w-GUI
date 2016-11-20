@@ -5,11 +5,15 @@ Controller::Controller()
 
 }
 
-void Controller::run_prog(int choice, int type, string name, string num, double weight, double cost, double pow_con, double max_spd, double pow_eat, int num_bat)
+Robot Controller::get_robo_c()
+{
+	return robo_ret;
+}
+
+void Controller::run_prog(Robot r_obj, int choice, int type, string name, string num, double weight, double cost, double pow_con, double max_spd, double pow_eat, int num_bat)
 {
     int flag = 1;
-
-    Robot obj;
+	
     Order obj_1;
 
     while (flag)
@@ -36,35 +40,35 @@ void Controller::run_prog(int choice, int type, string name, string num, double 
         if (user_choice == 1)
         {
 			cout << "lklklkl" << endl;
-            obj.create_comp(type, name, num, weight, cost, pow_con, max_spd, pow_eat, num_bat);
-			obj.view_comp();
+			robo_ret.create_comp(type, name, num, weight, cost, pow_con, max_spd, pow_eat, num_bat);
+			robo_ret.view_comp();
 			break;
         }
 
         if (user_choice == 2)
         {
-            obj.view_comp();
+            robo_ret.view_comp();
 			break;
         }
 
         if (user_choice == 3)
         {
-            obj.set_robot();
+            robo_ret.set_robot();
         }
 
         if (user_choice == 4)
         {
-            obj.print_all_models();
+            robo_ret.print_all_models();
         }
 
         if (user_choice == 5)
         {
-            obj_1.order_robot(obj);
+            obj_1.order_robot(robo_ret);
         }
 
         if (user_choice == 6)
         {
-            obj_1.view_bill_of_sale(obj);
+            obj_1.view_bill_of_sale(robo_ret);
         }
 
         if (user_choice == 7)
