@@ -15,6 +15,8 @@
 #include "Controller.h"
 #include "Scroll_Window.h"
 
+#include <string>
+
 #include <iostream>
 
 using namespace std;

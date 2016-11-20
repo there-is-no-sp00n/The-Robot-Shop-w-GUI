@@ -5,7 +5,7 @@ Robot::Robot()
 
 }
 
-void Robot::create_comp(int type, string name, string num, double weight, double cost, double pow_con, double max_spd, double pow_eat, int num_bat)
+void Robot::create_comp(int type, string name, string num, string desc, double weight, double cost, double pow_con, double max_spd, double pow_eat, int num_bat)
 {
     int flag = 1;
     while (flag)
@@ -35,43 +35,41 @@ void Robot::create_comp(int type, string name, string num, double weight, double
 
         if (part_type == 0)
         {
-            Head obj_head(name, num, "pol", weight, cost);
-            //obj_head.set_comp(0);
+            Head obj_head(name, num, desc, weight, cost);
             all_head.push_back(obj_head);
 			break;
         }
 
         if (part_type == 1)
         {
-            Torso obj_torso;
-            obj_torso.set_comp(1);
-            obj_torso.set_torso();
+            Torso obj_torso(name,num,desc,weight,cost,num_bat);
             all_torso.push_back(obj_torso);
+			break;
         }
 
         if (part_type == 2)
         {
-            Arm obj_arm(name, num, "pll", weight, cost, pow_con);
-            //obj_arm.set_comp(2);
-            //obj_arm.set_arm();
+            Arm obj_arm(name, num, desc, weight, cost, pow_con);
             all_arm.push_back(obj_arm);
 			break;
         }
 
         if(part_type == 3)
         {
-            Locomotor obj_loco;
-            obj_loco.set_comp(3);
-            obj_loco.set_loco();
+            Locomotor obj_loco(name, num, desc, weight, cost, max_spd, pow_eat); 
+            //obj_loco.set_comp(3);
+            //obj_loco.set_loco();
             all_loco.push_back(obj_loco);
+			break;
         }
 
         if(part_type == 4)
         {
-            Battery obj_bat;
-            obj_bat.set_comp(4);
-            obj_bat.set_bat();
+            Battery obj_bat(name, num, desc, weight, cost, pow_con);
+            //obj_bat.set_comp(4);
+			//obj_bat.set_bat();
             all_bat.push_back(obj_bat);
+			break;
         }
 
         if(part_type == 5)
@@ -387,6 +385,11 @@ void Robot::set_robot()
     }
 
 }
+
+vector <Head> Robot::get_hvec()
+{
+	return all_head;
+}
 void Robot::view_comp()
 {
     cout << "### LIST OF COMPONENTS ###" << endl;
@@ -401,6 +404,7 @@ void Robot::view_comp()
         cout << "Head Number: " << all_head[i].ahoy.comp_part_num << endl;
         cout << "Head Weight: " << all_head[i].ahoy.comp_weight << endl;
         cout << "Head Cost: " << all_head[i].ahoy.comp_cost << endl;
+		cout << "Head Desc: " << all_head[i].ahoy.comp_desc << endl;
         cout << endl;
     }
 
@@ -413,6 +417,7 @@ void Robot::view_comp()
         cout << "Torso Weight: " << all_torso[i].ahoy.comp_weight << endl;
         cout << "Torso Cost: " << all_torso[i].ahoy.comp_cost << endl;
         cout << "Torso Battery: " << all_torso[i].get_total_battery(all_torso[i]) << endl;
+		cout << "Torso Desc: " << all_torso[i].ahoy.comp_desc << endl;
         cout << endl;
     }
 
@@ -426,6 +431,7 @@ void Robot::view_comp()
         cout << "Arm Weight: " << all_arm[i].ahoy.comp_weight << endl;
         cout << "Arm Cost: " << all_arm[i].ahoy.comp_cost << endl;
         cout << "Arm Power: " << all_arm[i].get_arm_power(all_arm[i]) << endl;
+		cout << "Arm Desc: " << all_arm[i].ahoy.comp_desc << endl;
         cout << endl;
     }
 
@@ -439,6 +445,7 @@ void Robot::view_comp()
         cout << "Locomotor Cost: " << all_loco[i].ahoy.comp_cost << endl;
         cout << "Locomotor Max Speed: " << all_loco[i].get_max_speed(all_loco[i]) << endl;
         cout << "Locomotor Power Consumption: " << all_loco[i].get_pow_eat(all_loco[i]) << endl;
+		cout << "Locomotor Desc: " << all_loco[i].ahoy.comp_desc << endl;
         cout << endl;
     }
 
@@ -451,6 +458,7 @@ void Robot::view_comp()
         cout << "Battery Weight: " << all_bat[i].ahoy.comp_weight << endl;
         cout << "Battery Cost: " << all_bat[i].ahoy.comp_cost << endl;
         cout << "Battery Power: " << all_bat[i].get_battery(all_bat[i]) << endl;
+		cout << "Battery Desc: " << all_bat[i].ahoy.comp_desc << endl;
         cout << endl;
     }
 

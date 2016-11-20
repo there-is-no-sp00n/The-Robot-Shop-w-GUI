@@ -18,7 +18,7 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
 
         void detail_robot_view();
 
-        void create_comp(int type, string name, string num, double weight, double cost, double pow_con, double max_spd, double pow_eat, int num_bat);
+        void create_comp(int type, string name, string num, string desc, double weight, double cost, double pow_con, double max_spd, double pow_eat, int num_bat);
 
         void view_comp();
 
@@ -26,6 +26,7 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
 
         double get_retail(Robot, int);
         double get_weight(Robot, int);
+		vector <Head> get_hvec();
 
     private:
         struct robo_bobo

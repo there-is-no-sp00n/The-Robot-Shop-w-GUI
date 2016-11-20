@@ -13,39 +13,70 @@ void head_CB (Fl_Widget *w, void *p)
 	
 }
 
+
+void torso_CB (Fl_Widget *w, void *p)
+{
+	cout << "hola" << endl;
+
+	talk.r_dialog(1);
+	rob = talk.get_robot();
+}
+
 void arm_CB (Fl_Widget *w, void *p)
 {
 	cout << "hi" << endl;
+
 	talk.r_dialog(2);
+	rob = talk.get_robot();
+}
+
+void loco_CB (Fl_Widget *w, void *p)
+{
+	cout << "ola" << endl;
+
+	talk.r_dialog(3);
+	rob = talk.get_robot();
+}
+
+void battery_CB (Fl_Widget *w, void *p)
+{
+	cout << "nihao" << endl;
+	talk.r_dialog(4);
 	rob = talk.get_robot();
 }
 
 void view_comp_CB (Fl_Widget *w, void *p)
 {
 	cout << "marimba" << endl;
-	//talk.show_comp(2, obj);
-	//Fl_Browser *bro = new Fl_Browser(100,100,500,500,"test");
-	//bro->add("One");
-	//bro->add("Two");
-	//bro->activate();
-	//bro->display(100,1);
-	//bro->show();
-	//for (int t = 0; t <= bro->size(); t++)
-	//{
-	//	cout << "marimba 2" << endl;
-	//}
-
-	//Fl_Scrollbar *scro = new Fl_Scrollbar(0, 200, 0, 400, "Label");
-	//scro->redraw();
-	//scro->show();
-
-	//Scroll_Window obj7;
-	//obj7.show_scroll();
+	
 	rob = talk.get_robot();
 	rob.view_comp();
+
+	string nombre, number, s_wght, s_cst;
+	char s_w[1024];
+	char c_w[1024];
+	double weight,cost;
+
+	vector <Head> noggin = rob.get_hvec();
+	int j = noggin.size();
+	cout << j << endl;
+	for (int i = 0; i < j; i++)
+    {
+        nombre = noggin[i].ahoy.comp_name;
+        number = noggin[i].ahoy.comp_part_num;
+        weight = noggin[i].ahoy.comp_weight;
+		itoa(weight, s_w,1024);
+        cost = noggin[i].ahoy.comp_cost;
+		itoa(cost, c_w, 1024);
+
+    }
+
+
+
+
 	
 	Scroll_Window obj7;
-	obj7.show_scroll();
+	obj7.show_scroll(nombre, number, s_w, c_w);
 
 	
 }
@@ -72,16 +103,23 @@ int View::show_the_goods()
 		{"&Create", 0, 0, 0, FL_SUBMENU},
 			{"&Robot Parts", 0, 0, 0, FL_SUBMENU},
 			{"Head", 0, (Fl_Callback*)head_CB},
-			{"Torso"},
+			{"Torso", 0, (Fl_Callback*)torso_CB},
 			{"Arm", 0, (Fl_Callback*)arm_CB},
-			{"Locomotor"},
-			{"Battery"},
+			{"Locomotor",0, (Fl_Callback*)loco_CB},
+			{"Battery",0, (Fl_Callback*)battery_CB},
 			{0},
 			{"Robot Model", 0, 0, 0, FL_MENU_DIVIDER},
 			{"&Order"},
 		{0},
 		{"&View", 0,0,0, FL_SUBMENU},
-			{"Components", 0, (Fl_Callback*)view_comp_CB},
+			{"Comp",0, (Fl_Callback*)view_comp_CB},
+			{"Components", 0,0,0,FL_SUBMENU}, //(Fl_Callback*)view_comp_CB},
+			{"Head"},
+			{"Torso"},
+			{"Arm"},
+			{"Locomotor"},
+			{"Battery"},
+			{0},
 			{"Robot Model", 0, 0, 0, FL_MENU_DIVIDER},
 			{"Bill of Sale"},
 			{"Order by SA"},

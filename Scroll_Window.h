@@ -16,7 +16,7 @@ class Scroll_Window
 	public:
 		Scroll_Window();
 
-		void show_scroll();
+		void show_scroll(string, string, char[1024],char[1024]);
 	protected:
 		
 
