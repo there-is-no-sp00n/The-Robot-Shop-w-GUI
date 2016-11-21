@@ -22,6 +22,8 @@
 #include "Locomotor_Window.h"
 #include "Battery_Window.h"
 
+#include "Make_Robot_Window.h"
+
 #include <string>
 
 #include <iostream>

@@ -53,31 +53,34 @@ void view_comp_CB (Fl_Widget *w, void *p)
 	rob = talk.get_robot();
 	rob.view_comp();
 
-	string nombre, number, s_wght, s_cst;
-	char s_w[1024];
-	char c_w[1024];
-	double weight,cost;
+	//string nombre, number, s_wght, s_cst;
+	//char s_w[1024];
+	//char c_w[1024];
+	//double weight,cost;
 
-	vector <Head> noggin = rob.get_hvec();
-	int j = noggin.size();
-	cout << j << endl;
-	for (int i = 0; i < j; i++)
-    {
-        nombre = noggin[i].ahoy.comp_name;
-        number = noggin[i].ahoy.comp_part_num;
-        weight = noggin[i].ahoy.comp_weight;
-		itoa(weight, s_w,1024);
-        cost = noggin[i].ahoy.comp_cost;
-		itoa(cost, c_w, 1024);
+	//vector <Head> noggin = rob.get_hvec();
+	//int j = noggin.size();
+	//cout << j << endl;
+	//for (int i = 0; i < j; i++)
+    //{
+    //    nombre = noggin[i].ahoy.comp_name;
+    //    number = noggin[i].ahoy.comp_part_num;
+    //    weight = noggin[i].ahoy.comp_weight;
+	//	itoa(weight, s_w,1024);
+    //    cost = noggin[i].ahoy.comp_cost;
+	//	itoa(cost, c_w, 1024);
 
-    }
+    //}
 
 
 
 
 	
-	Scroll_Window obj7;
-	obj7.show_scroll(nombre, number, s_w, c_w);
+	//Scroll_Window obj7;
+	//obj7.show_scroll(nombre, number, s_w, c_w);
+
+	Make_Robot_Window lets_go;
+	lets_go.make_window(rob);
 
 	
 }
