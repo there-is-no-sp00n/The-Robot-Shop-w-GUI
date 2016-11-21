@@ -10,10 +10,12 @@
 #include <FL/Fl_Widget.H>
 #include <FL/Fl_Browser.H>
 #include <FL/Fl_Output.H>
+#include <FL/Fl_Multiline_Output.H>
 
 #include "Robot_Part_Dialog.h"
-#include "Controller.h"
+#include "Robot.h"
 #include "Scroll_Window.h"
+#include "Tabbed_Window.h"
 
 #include <string>
 

@@ -81,6 +81,16 @@ void view_comp_CB (Fl_Widget *w, void *p)
 	
 }
 
+void view_head_CB(Fl_Widget *w, void *p)
+{
+	cout << "manana" << endl;
+
+	Tabbed_Window disp;
+	rob = talk.get_robot();
+	vector <Head> noggin = rob.get_hvec();
+	disp.show_head_tab(noggin);
+}
+
 View::View()
 {
 
@@ -114,7 +124,7 @@ int View::show_the_goods()
 		{"&View", 0,0,0, FL_SUBMENU},
 			{"Comp",0, (Fl_Callback*)view_comp_CB},
 			{"Components", 0,0,0,FL_SUBMENU}, //(Fl_Callback*)view_comp_CB},
-			{"Head"},
+			{"Head", 0, (Fl_Callback *)view_head_CB},
 			{"Torso"},
 			{"Arm"},
 			{"Locomotor"},

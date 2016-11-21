@@ -45,7 +45,7 @@ void Scroll_Window::show_scroll(string n, string num, char wei[1024], char cst[1
 			Fl_Output *name, *number, *weight, *cost;
 			name = new Fl_Output(100,100,20,20, "Head Name:");
 			name->textsize(10);
-			name->value(n_s);
+			name->value(n_s); 
 
 			number = new Fl_Output(100,120,20,20, "Head Number:");
 			number->textsize(10);
