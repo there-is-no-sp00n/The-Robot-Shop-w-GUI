@@ -15,7 +15,9 @@
 #include "Robot_Part_Dialog.h"
 #include "Robot.h"
 #include "Scroll_Window.h"
-#include "Tabbed_Window.h"
+
+#include "Head_Window.h"
+#include "Torso_Window.h"
 
 #include <string>
 

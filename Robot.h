@@ -26,7 +26,12 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
 
         double get_retail(Robot, int);
         double get_weight(Robot, int);
+
 		vector <Head> get_hvec();
+		vector <Torso> get_tvec();
+		vector <Arm> get_avec();
+		vector <Locomotor> get_lvec();
+		vector <Battery> get_bvec();
 
     private:
         struct robo_bobo

@@ -5,7 +5,7 @@ Robot_Part_Dialog talk;
 
 void head_CB (Fl_Widget *w, void *p)
 {
-	cout << "aloha" << endl;
+	cout << "head callback" << endl;
 		
 	talk.r_dialog(0);
 	rob = talk.get_robot();
@@ -16,7 +16,7 @@ void head_CB (Fl_Widget *w, void *p)
 
 void torso_CB (Fl_Widget *w, void *p)
 {
-	cout << "hola" << endl;
+	cout << "torso callback" << endl;
 
 	talk.r_dialog(1);
 	rob = talk.get_robot();
@@ -24,7 +24,7 @@ void torso_CB (Fl_Widget *w, void *p)
 
 void arm_CB (Fl_Widget *w, void *p)
 {
-	cout << "hi" << endl;
+	cout << "arm callback" << endl;
 
 	talk.r_dialog(2);
 	rob = talk.get_robot();
@@ -32,7 +32,7 @@ void arm_CB (Fl_Widget *w, void *p)
 
 void loco_CB (Fl_Widget *w, void *p)
 {
-	cout << "ola" << endl;
+	cout << "locomotor callback" << endl;
 
 	talk.r_dialog(3);
 	rob = talk.get_robot();
@@ -40,7 +40,8 @@ void loco_CB (Fl_Widget *w, void *p)
 
 void battery_CB (Fl_Widget *w, void *p)
 {
-	cout << "nihao" << endl;
+	cout << "battery callback" << endl;
+
 	talk.r_dialog(4);
 	rob = talk.get_robot();
 }
@@ -83,12 +84,27 @@ void view_comp_CB (Fl_Widget *w, void *p)
 
 void view_head_CB(Fl_Widget *w, void *p)
 {
-	cout << "manana" << endl;
+	cout << "view head" << endl;
 
-	Tabbed_Window disp;
+	Head_Window disp;
 	rob = talk.get_robot();
 	vector <Head> noggin = rob.get_hvec();
 	disp.show_head_tab(noggin);
+}
+
+void view_torso_CB(Fl_Widget *w, void *p)
+{
+	cout << "view torso" << endl;
+
+	Torso_Window disp_t;
+	rob = talk.get_robot();
+	vector <Torso> body = rob.get_tvec();
+	disp_t.show_torso_tab(body);
+}
+
+void view_arm_CB(Fl_Widget *w, void *p)
+{
+	cout << "view arm" << endl;
 }
 
 View::View()
@@ -125,7 +141,7 @@ int View::show_the_goods()
 			{"Comp",0, (Fl_Callback*)view_comp_CB},
 			{"Components", 0,0,0,FL_SUBMENU}, //(Fl_Callback*)view_comp_CB},
 			{"Head", 0, (Fl_Callback *)view_head_CB},
-			{"Torso"},
+			{"Torso", 0, (Fl_Callback *)view_torso_CB},
 			{"Arm"},
 			{"Locomotor"},
 			{"Battery"},

@@ -390,6 +390,27 @@ vector <Head> Robot::get_hvec()
 {
 	return all_head;
 }
+
+vector <Torso> Robot::get_tvec()
+{
+	return all_torso;
+}
+
+vector <Arm> Robot::get_avec()
+{
+	return all_arm;
+}
+
+vector <Locomotor> Robot::get_lvec()
+{
+	return all_loco;
+}
+
+vector <Battery> Robot::get_bvec()
+{
+	return all_bat;
+}
+
 void Robot::view_comp()
 {
     cout << "### LIST OF COMPONENTS ###" << endl;
