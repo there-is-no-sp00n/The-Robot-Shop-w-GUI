@@ -123,7 +123,7 @@ void show_torsos()
 	o_cost->textsize(10);
 	o_cost->value(c_cost);
 
-	o_num_of_bat = new Fl_Output(100, 180, 50, 30, "Battery Slot(s);");
+	o_num_of_bat = new Fl_Output(100, 180, 50, 30, "Battery Slot(s):");
 	o_num_of_bat->textsize(10);
 	o_num_of_bat->value(num_of_bat);
 

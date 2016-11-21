@@ -105,6 +105,32 @@ void view_torso_CB(Fl_Widget *w, void *p)
 void view_arm_CB(Fl_Widget *w, void *p)
 {
 	cout << "view arm" << endl;
+
+	Arm_Window disp_a;
+	rob = talk.get_robot();
+	vector <Arm> aarm = rob.get_avec();
+	disp_a.show_arm_tab(aarm);
+}
+
+void view_loco_CB(Fl_Widget *w, void *p)
+{
+	cout << "view locomotor" << endl;
+
+	Locomotor_Window disp_l;
+	rob = talk.get_robot();
+	vector <Locomotor> moto = rob.get_lvec();
+	disp_l.see_loco_tab(moto);
+}
+
+void view_bat_CB(Fl_Widget *w, void *p)
+{
+	cout << "view battery" << endl;
+
+	Battery_Window disp_b;
+	rob = talk.get_robot();
+	vector <Battery> da_pow = rob.get_bvec();
+	disp_b.show_battery_tab(da_pow);
+
 }
 
 View::View()
@@ -142,9 +168,9 @@ int View::show_the_goods()
 			{"Components", 0,0,0,FL_SUBMENU}, //(Fl_Callback*)view_comp_CB},
 			{"Head", 0, (Fl_Callback *)view_head_CB},
 			{"Torso", 0, (Fl_Callback *)view_torso_CB},
-			{"Arm"},
-			{"Locomotor"},
-			{"Battery"},
+			{"Arm", 0, (Fl_Callback *)view_arm_CB},
+			{"Locomotor", 0, (Fl_Callback *)view_loco_CB},
+			{"Battery", 0, (Fl_Callback *)view_bat_CB},
 			{0},
 			{"Robot Model", 0, 0, 0, FL_MENU_DIVIDER},
 			{"Bill of Sale"},

@@ -18,6 +18,9 @@
 
 #include "Head_Window.h"
 #include "Torso_Window.h"
+#include "Arm_Window.h"
+#include "Locomotor_Window.h"
+#include "Battery_Window.h"
 
 #include <string>
 
