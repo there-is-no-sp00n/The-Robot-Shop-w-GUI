@@ -1,6 +1,6 @@
 # The-Robot-Shop w/ GUI
 
 
-This is a program to help out the startup Robbie Robot Shop.
+This is the GUI version to the CLI version of The-Robot-Shop.
 
-It is the same functionality as the regular robot shop, however the user interface is GUI rather than CLI.
+This replaces the CLI interface from the previous homework to a GUI one.
