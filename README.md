@@ -4,6 +4,8 @@
 This is the GUI version to the CLI version of The-Robot-Shop
 
 
+
+
  *** INSTRUCTIONS ***
 
 The user can pick functionalities from the menubar.
@@ -28,5 +30,6 @@ Like the robot, the user can also create sales associates and customers with bla
  
  An order CAN ONLY BE created after a robot model, sales associate, and customer has been created.
  
- After creating the robot model, sales associate, and customer the user MUST BE SURE TO PICK THEM in the order window.
- Otherwise the program will crash.
+ After creating the robot model, sales associate, and customer, the user MUST BE SURE TO PICK THEM in the order window.
+ 
+ If an order is initialized with blank data, the program will CEASE TO FUNCTION
