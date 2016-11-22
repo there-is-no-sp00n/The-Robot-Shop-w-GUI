@@ -182,7 +182,7 @@ void input_robot_name()
 
 	////////////
 
-	r_n_win = new Fl_Window(0,0,300,500, "ROBOT INPUT");
+	r_n_win = new Fl_Window(0,0,500,500, "ROBOT INPUT");
 
 	tot_cost = new Fl_Output(80,50,50,50, "Total Cost");
 	s_t_cost = to_string(static_cast <long long>(t_cost));
@@ -190,10 +190,10 @@ void input_robot_name()
 	strncpy(o_t_cost, s_t_cost.c_str(), sizeof(o_t_cost));
 	tot_cost->value(o_t_cost);
 
-	retail = new Fl_Input(80, 100, 50,50, "Retail Price:");
-	robo_name = new Fl_Input(80, 150, 50, 50, "Name:");
-	robo_num = new Fl_Input(80, 200, 50, 50, "Serial:");
-	robo_desc = new Fl_Multiline_Input(80, 220, 50, 200, "Description:");
+	retail = new Fl_Input(80, 100, 50,30, "Retail Price:");
+	robo_name = new Fl_Input(80, 160, 50, 30, "Name:");
+	robo_num = new Fl_Input(80, 220, 50, 30, "Serial:");
+	robo_desc = new Fl_Multiline_Input(80, 280, 50, 200, "Description:");
 	build = new Fl_Button(150, 175, 60,40, "BUILD");
 	build->callback((Fl_Callback *)build_CB,0);
 
