@@ -12,8 +12,9 @@
 #include <iostream>
 #include <string>
 
-#include "Controller.h"
+//#include "Controller.h"
 #include "View.h"
+#include "Robot.h"
 
 using namespace std;
 

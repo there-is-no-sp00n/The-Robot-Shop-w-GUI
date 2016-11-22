@@ -155,5 +155,8 @@ void Arm_Window::show_arm_tab(vector <Arm> aarm)
 	knuckle = aarm;
 	pos_a = 0;
 
-	show_arms();
+	if (siz_a != -1)
+	{
+		show_arms();
+	}
 }

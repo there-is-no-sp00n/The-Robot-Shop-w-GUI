@@ -2,6 +2,7 @@
 
 Robot rob;
 Robot_Part_Dialog talk;
+Make_Robot_Window lets_go;
 
 void head_CB (Fl_Widget *w, void *p)
 {
@@ -79,10 +80,24 @@ void view_comp_CB (Fl_Widget *w, void *p)
 	//Scroll_Window obj7;
 	//obj7.show_scroll(nombre, number, s_w, c_w);
 
-	Make_Robot_Window lets_go;
-	lets_go.make_window(rob);
+	
 
 	
+}
+
+void create_robo_CB(Fl_Widget *w, void *p)
+{
+	cout << "Create robo CB print" << endl;
+
+	rob = talk.get_robot();
+	
+
+	rob.view_comp();
+	lets_go.make_window(rob);
+	rob = lets_go.get_robo_m_r();
+	
+	rob.print_all_models();
+
 }
 
 void view_head_CB(Fl_Widget *w, void *p)
@@ -163,7 +178,7 @@ int View::show_the_goods()
 			{"Locomotor",0, (Fl_Callback*)loco_CB},
 			{"Battery",0, (Fl_Callback*)battery_CB},
 			{0},
-			{"Robot Model", 0, 0, 0, FL_MENU_DIVIDER},
+			{"Robot Model", 0, (Fl_Callback *)create_robo_CB,0, FL_MENU_DIVIDER},
 			{"&Order"},
 		{0},
 		{"&View", 0,0,0, FL_SUBMENU},

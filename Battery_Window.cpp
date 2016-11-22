@@ -157,7 +157,12 @@ void Battery_Window::show_battery_tab(vector <Battery> da_pow)
 	farad = da_pow;
 	siz_b = da_pow.size() - 1;
 
-	show_batteries();
+	if (siz_b != -1)
+	{
+		show_batteries();
+	}
+
+	
 
 
 }

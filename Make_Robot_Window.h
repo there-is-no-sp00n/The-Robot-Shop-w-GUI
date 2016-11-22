@@ -13,6 +13,8 @@ class Make_Robot_Window
 		Make_Robot_Window();
 
 		void make_window(Robot);
+
+		Robot get_robo_m_r();
 };
 
 #endif

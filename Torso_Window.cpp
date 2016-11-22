@@ -158,7 +158,10 @@ void Torso_Window::show_torso_tab(vector <Torso> belly)
 	pos_t = 0;
 	body = belly;
 	
-	show_torsos();
+	if (siz_t != -1)
+	{
+		show_torsos();
+	}
 
 
 }

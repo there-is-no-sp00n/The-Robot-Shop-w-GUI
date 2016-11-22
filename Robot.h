@@ -12,7 +12,32 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
     public:
         Robot();
 
-        void set_robot();
+		Robot(Head skull, Torso bod, Arm fist, Locomotor moto, Battery ene, string name, string num)
+		{
+			robo_cop.noggin = skull;
+			robo_cop.robo_t = bod;
+			robo_cop.first_arm = robo_cop.second_arm = fist;
+			robo_cop.loco_coco = moto;
+			robo_cop.power_af = ene;
+
+			robo_cop.final_cost = skull.ahoy.comp_cost;
+			robo_cop.final_cost += bod.ahoy.comp_cost;
+			robo_cop.final_cost += (2*fist.ahoy.comp_cost);
+			robo_cop.final_cost += moto.ahoy.comp_cost;
+			robo_cop.final_cost += ene.ahoy.comp_cost;
+
+			robo_cop.final_weight = skull.ahoy.comp_weight;
+			robo_cop.final_weight = bod.ahoy.comp_weight;
+			robo_cop.final_weight = (2*fist.ahoy.comp_weight);
+			robo_cop.final_weight = moto.ahoy.comp_weight;
+			robo_cop.final_weight = ene.ahoy.comp_weight;
+			robo_cop.model_name = name;
+			robo_cop.model_num = num;
+
+
+		}
+
+        void set_robot(Head, Torso, Arm, Locomotor, Battery, string, string);
 
         void print_all_models();
 
@@ -32,6 +57,8 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
 		vector <Arm> get_avec();
 		vector <Locomotor> get_lvec();
 		vector <Battery> get_bvec();
+
+		vector <struct robo_bobo> get_rvec();
 
     private:
         struct robo_bobo

@@ -164,6 +164,9 @@ void Locomotor_Window::see_loco_tab(vector <Locomotor> moto)
 	hello_moto = moto;
 	pos_l = 0;
 
-	show_locos();
+	if (siz_l != -1)
+	{
+		show_locos();
+	}
 
 }
