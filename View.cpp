@@ -257,6 +257,14 @@ void view_sa_CB(Fl_Widget *w, void *p)
 	polo.show_asso_tab(sa_list);
 }
 
+void view_all_order_CB(Fl_Widget *w, void *p)
+{
+	all_da_info = da_orders.get_ordersss();
+	cout << "view all orders callback" << endl;
+	Order_View_Window come_on;
+	come_on.show_order_tab(all_da_info);
+}
+
 View::View()
 {
 
@@ -301,7 +309,7 @@ int View::show_the_goods()
 			{"Robot Model", 0, (Fl_Callback *)view_robo_CB, 0, FL_MENU_DIVIDER},
 			{"Customer",0, (Fl_Callback *)view_customer_CB},
 			{"Associate", 0, (Fl_Callback *)view_sa_CB},
-			//{"All Orders"},
+			{"All Orders", 0, (Fl_Callback *)view_all_order_CB},
 			//{"Sales Report"},
 		{0},
 		{0}

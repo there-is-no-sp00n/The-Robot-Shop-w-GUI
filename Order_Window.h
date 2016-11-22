@@ -28,6 +28,35 @@ public:
 
 	vector <Order_Window> get_ordersss();
 
+	string get_c_name()
+	{
+		return o_c_name;
+	}
+
+	string get_sa_name()
+	{
+		return o_sa_name;
+	}
+
+	string get_o_number()
+	{
+		return o_number;
+	}
+
+	string get_o_date()
+	{
+		return o_date;
+	}
+
+	double get_da_f_price()
+	{
+		return total_price;
+	}
+
+	double get_da_f_weight()
+	{
+		return total_weight;
+	}
 private:
 	string o_c_name;
 	string o_sa_name;
