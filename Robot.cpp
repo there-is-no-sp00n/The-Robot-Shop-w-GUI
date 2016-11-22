@@ -78,9 +78,9 @@ void Robot::create_comp(int type, string name, string num, string desc, double w
         }
     }
 }
-void Robot::set_robot(Head nog, Torso slam, Arm punch, Locomotor vel, Battery pow, string name, string num)
+void Robot::set_robot(Head nog, Torso slam, Arm punch, Locomotor vel, Battery pow, string name, string num, string desc, double retail, double weight, double cost)
 {
-	cout << "We're in set_robot" << endl; 
+	//cout << "We're in set_robot" << endl; 
 	//add the parts to it
 	robo_cop.noggin = nog;
 	robo_cop.robo_t = slam;
@@ -92,27 +92,41 @@ void Robot::set_robot(Head nog, Torso slam, Arm punch, Locomotor vel, Battery po
 	//set the robot variables
 	robo_cop.model_name = name;
 	robo_cop.model_num = num;
+	robo_cop.desc = desc;
+
+	robo_cop.retail_price = retail;
+	robo_cop.final_cost = cost;
+	robo_cop.final_weight = weight;
 
 
 	//calculate the
-	robo_cop.final_cost = nog.ahoy.comp_cost;
-	robo_cop.final_cost += slam.ahoy.comp_cost;
-	robo_cop.final_cost += (2*punch.ahoy.comp_cost);
-	robo_cop.final_cost += vel.ahoy.comp_cost;
-	robo_cop.final_cost += pow.ahoy.comp_cost*slam.get_total_battery(slam);
+	//robo_cop.final_cost = nog.ahoy.comp_cost;
+	//robo_cop.final_cost += slam.ahoy.comp_cost;
+	//robo_cop.final_cost += (2*punch.ahoy.comp_cost);
+	//robo_cop.final_cost += vel.ahoy.comp_cost;
+	//robo_cop.final_cost += pow.ahoy.comp_cost*slam.get_total_battery(slam);
 
-	robo_cop.final_weight = nog.ahoy.comp_weight;
-	robo_cop.final_weight = slam.ahoy.comp_weight;
-	robo_cop.final_weight = (2*punch.ahoy.comp_weight);
-	robo_cop.final_weight = vel.ahoy.comp_weight;
-	robo_cop.final_weight = pow.ahoy.comp_weight * slam.get_total_battery(slam);
+	//robo_cop.final_weight = nog.ahoy.comp_weight;
+	//robo_cop.final_weight = slam.ahoy.comp_weight;
+	//robo_cop.final_weight = (2*punch.ahoy.comp_weight);
+	//robo_cop.final_weight = vel.ahoy.comp_weight;
+	//robo_cop.final_weight = pow.ahoy.comp_weight * slam.get_total_battery(slam);
 
 	hill.push_back(robo_cop);
 
-	print_all_models();
+	//print_all_models();
 
 
 
+}
+
+int Robot::ret_r_vec_size()
+{
+	
+	int j = hill.size();
+	cout << "vec_siz " << j << endl;
+	return j;
+	
 }
 
 vector <Head> Robot::get_hvec()
@@ -140,6 +154,10 @@ vector <Battery> Robot::get_bvec()
 	return all_bat;
 }
 
+//vector <struct robo_bobo> Robot::get_rvec(Robot rotten)
+//{
+//	return rotten.hill;
+//}
 void Robot::view_comp()
 {
     cout << "### LIST OF COMPONENTS ###" << endl;

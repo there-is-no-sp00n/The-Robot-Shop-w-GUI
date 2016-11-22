@@ -33,6 +33,15 @@ class Robot_Part_Dialog
 
 		Robot get_robot();
 
+		void set_robo(Robot rad)
+		{
+			cout << "in dialog" << endl;
+			rad.print_all_models();
+			robo_d_ret = rad;
+
+		}
+
+		void f_set();
 		//string nombre();
 		//{
 		//	string nombre;

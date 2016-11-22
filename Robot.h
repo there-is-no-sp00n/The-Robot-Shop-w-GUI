@@ -37,7 +37,7 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
 
 		}
 
-        void set_robot(Head, Torso, Arm, Locomotor, Battery, string, string);
+        void set_robot(Head, Torso, Arm, Locomotor, Battery, string, string, string, double, double, double);
 
         void print_all_models();
 
@@ -60,6 +60,30 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
 
 		vector <struct robo_bobo> get_rvec();
 
+		string ret_name(int i)
+		{
+			return hill[i].model_name;
+		}
+
+		string ret_num(int i)
+		{
+			return hill[i].model_num;
+		}
+		string ret_desc(int i)
+		{
+			return hill[i].desc;
+		}
+		double ret_retail(int i)
+		{
+			return hill[i].retail_price;
+		}
+		double ret_weight(int i)
+		{
+			return hill[i].final_weight;
+		}
+
+		int ret_r_vec_size();
+
     private:
         struct robo_bobo
         {
@@ -69,6 +93,7 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
 
             string model_name;
             string model_num;
+			string desc;
 
             Torso robo_t;
             Locomotor loco_coco;
@@ -79,6 +104,8 @@ class Robot : public Torso, public Locomotor, public Battery, public Arm, public
 
 			int parts[6];
         };
+
+		//int size_r;
 
         robo_bobo robo_cop;
 

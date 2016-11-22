@@ -4,14 +4,15 @@ Robot roro;
 
 //robot input from the user
 Fl_Input *retail, *robo_name, *robo_num;
+Fl_Multiline_Input *robo_desc;
 Fl_Output *tot_cost;
 Fl_Button *build;
-string r_name, r_num, r_retail;
+string r_name, r_num, r_retail, r_desc;
 
 Fl_Window *r_win;
 Fl_Window *r_n_win;
 
-double cst;
+double cst, wght;
 
 Head h_f_r;
 Torso t_f_r;
@@ -39,12 +40,18 @@ void before_set_rob()
 	r_retail = retail->value();
 	r_name = robo_name->value();
 	r_num = robo_num->value();
+	r_desc = robo_desc->value();
 	
 	cout << "retail price: " << r_retail << endl;
 	cout << "robot name: " << r_name << endl;
 	cout << "robot serial: " << r_num << endl;
+	cout << "robot desc: " << r_desc << endl;
 
-	roro.set_robot(h_f_r, t_f_r, a_f_r, l_f_r, b_f_r, r_name, r_num);
+	double pr_robo;
+
+	pr_robo = atof(r_retail.c_str());
+
+	roro.set_robot(h_f_r, t_f_r, a_f_r, l_f_r, b_f_r, r_name, r_num, r_desc, pr_robo, wght, cst);
 }
 
 void build_CB(Fl_Widget *w, void *p)
@@ -108,6 +115,7 @@ void input_robot_name()
 	cout << "input robot name" << endl;
 
 	double t_cost = 0;
+	double t_weight = 0;
 	string s_t_cost;
 	char o_t_cost[1024];
 
@@ -132,51 +140,61 @@ void input_robot_name()
 	if (c_head != -1)
 	{
 		t_cost += h_r[c_head].ahoy.comp_cost;
+		t_weight += h_r[c_head].ahoy.comp_weight;
 		h_f_r = h_r[c_head];
 	}
 	if (c_tor != -1)
 	{
 		t_cost += t_r[c_tor].ahoy.comp_cost;
+		t_weight += t_r[c_tor].ahoy.comp_weight;
 		t_f_r = t_r[c_tor];
 	}
 
 	if (c_arm != -1)
 	{
 		t_cost += a_r[c_arm].ahoy.comp_cost;
+		t_weight += a_r[c_arm].ahoy.comp_weight;
 		a_f_r = a_r[c_arm];
 	}
 
 	if (c_loco != -1)
 	{
 		t_cost += l_r[c_loco].ahoy.comp_cost;
+		t_weight += l_r[c_loco].ahoy.comp_weight;
 		l_f_r = l_r[c_loco];
 	}
 
 	if (c_bat != -1)
 	{
 		t_cost += b_r[c_bat].ahoy.comp_cost;
+		t_weight += b_r[c_bat].ahoy.comp_weight;
 		b_f_r = b_r[c_bat];
 	}
 
 	cout << "Total Cost: " << t_cost <<  endl;
+	cout << "Total Weight: " << t_weight << endl;
+
+	cst = t_cost;
+	wght = t_weight;
 
 
 
 
 	////////////
 
-	r_n_win = new Fl_Window(0,0,300,300, "ROBOT INPUT");
+	r_n_win = new Fl_Window(0,0,300,500, "ROBOT INPUT");
 
-	tot_cost = new Fl_Output(50,50,50,50, "Total Cost");
+	tot_cost = new Fl_Output(80,50,50,50, "Total Cost");
 	s_t_cost = to_string(static_cast <long long>(t_cost));
 
 	strncpy(o_t_cost, s_t_cost.c_str(), sizeof(o_t_cost));
 	tot_cost->value(o_t_cost);
 
-	retail = new Fl_Input(50, 100, 50,50, "Retail Price:");
-	robo_name = new Fl_Input(50, 150, 50, 50, "Name:");
-	robo_num = new Fl_Input(50, 200, 50, 50, "Serial:");
-	build = new Fl_Button(100, 250, 30,30, "BUILD");
+	retail = new Fl_Input(80, 100, 50,50, "Retail Price:");
+	robo_name = new Fl_Input(80, 150, 50, 50, "Name:");
+	robo_num = new Fl_Input(80, 200, 50, 50, "Serial:");
+	robo_desc = new Fl_Multiline_Input(80, 220, 50, 200, "Description:");
+	build = new Fl_Button(150, 175, 60,40, "BUILD");
 	build->callback((Fl_Callback *)build_CB,0);
 
 	r_retail = retail->value();
@@ -194,19 +212,12 @@ void input_robot_name()
 
 }
 
-void input_robot(vector <Head> nog, vector <Torso> bod, vector <Arm> fist, vector <Locomotor> coco, vector <Battery> pow)
-{
-	//Fl_Window *r_n_win = new Fl_Window(300,300, "ROBOT");
-
-	//roro.set_robot(nog, bod, fist, coco, pow, r_name, r_num);
-}
-
 Make_Robot_Window::Make_Robot_Window()
 {
 	
 }
 
-void Make_Robot_Window::make_window(Robot robo)
+void Make_Robot_Window::make_window(Robot robo, Robot robo_2)
 {
 	h_r = robo.get_hvec();
 	t_r = robo.get_tvec();
@@ -218,7 +229,7 @@ void Make_Robot_Window::make_window(Robot robo)
 
 
 
-	roro = robo;
+	roro = robo_2;
 
 	r_win = new Fl_Window(600,600, "Make Robot");
 	{

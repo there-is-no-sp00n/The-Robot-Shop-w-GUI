@@ -259,3 +259,10 @@ Robot Robot_Part_Dialog::get_robot()
 {
 	return robbie;
 }
+
+void Robot_Part_Dialog::f_set()
+{
+	robbie = robo_d_ret;
+	cout << "in f_set" << endl;
+	robbie.print_all_models();
+}

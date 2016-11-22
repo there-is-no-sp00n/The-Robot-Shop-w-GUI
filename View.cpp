@@ -1,6 +1,6 @@
 #include "View.h"
 
-Robot rob;
+Robot rob, rob_2;
 Robot_Part_Dialog talk;
 Make_Robot_Window lets_go;
 
@@ -47,40 +47,15 @@ void battery_CB (Fl_Widget *w, void *p)
 	rob = talk.get_robot();
 }
 
-void view_comp_CB (Fl_Widget *w, void *p)
+void view_robo_CB (Fl_Widget *w, void *p)
 {
-	cout << "marimba" << endl;
+	cout << "view robot calllback" << endl;
 	
-	rob = talk.get_robot();
-	rob.view_comp();
+	rob = lets_go.get_robo_m_r();
+	rob.print_all_models();	
 
-	//string nombre, number, s_wght, s_cst;
-	//char s_w[1024];
-	//char c_w[1024];
-	//double weight,cost;
-
-	//vector <Head> noggin = rob.get_hvec();
-	//int j = noggin.size();
-	//cout << j << endl;
-	//for (int i = 0; i < j; i++)
-    //{
-    //    nombre = noggin[i].ahoy.comp_name;
-    //    number = noggin[i].ahoy.comp_part_num;
-    //    weight = noggin[i].ahoy.comp_weight;
-	//	itoa(weight, s_w,1024);
-    //    cost = noggin[i].ahoy.comp_cost;
-	//	itoa(cost, c_w, 1024);
-
-    //}
-
-
-
-
-	
-	//Scroll_Window obj7;
-	//obj7.show_scroll(nombre, number, s_w, c_w);
-
-	
+	Robot_View_Window modelo;
+	modelo.show_robot_tab(rob);
 
 	
 }
@@ -89,14 +64,33 @@ void create_robo_CB(Fl_Widget *w, void *p)
 {
 	cout << "Create robo CB print" << endl;
 
+	int counter = 1;
+
+	//if (counter == 0)
+	//{
+	//	rob = lets_go.get_robo_m_r();
+	//}
+
+	//else
+	//{
+	//	rob = talk.get_robot();
+	//}
+
+	rob_2 = lets_go.get_robo_m_r();
 	rob = talk.get_robot();
 	
+	cout << "SHOULD PRINT MODELS" << endl;
+	rob_2.print_all_models();
+	lets_go.make_window(rob, rob_2);
+	//rob = lets_go.get_robo_m_r();
 
-	rob.view_comp();
-	lets_go.make_window(rob);
-	rob = lets_go.get_robo_m_r();
+	//rob = rob_2;
+
+	//talk.set_robo(rob);
+	//talk.f_set();
 	
-	rob.print_all_models();
+	//cout << "ROB OUT" << endl;
+	//rob.print_all_models();
 
 }
 
@@ -182,7 +176,7 @@ int View::show_the_goods()
 			{"&Order"},
 		{0},
 		{"&View", 0,0,0, FL_SUBMENU},
-			{"Comp",0, (Fl_Callback*)view_comp_CB},
+			//{"Comp",0, (Fl_Callback*)view_comp_CB},
 			{"Components", 0,0,0,FL_SUBMENU}, //(Fl_Callback*)view_comp_CB},
 			{"Head", 0, (Fl_Callback *)view_head_CB},
 			{"Torso", 0, (Fl_Callback *)view_torso_CB},
@@ -190,7 +184,7 @@ int View::show_the_goods()
 			{"Locomotor", 0, (Fl_Callback *)view_loco_CB},
 			{"Battery", 0, (Fl_Callback *)view_bat_CB},
 			{0},
-			{"Robot Model", 0, 0, 0, FL_MENU_DIVIDER},
+			{"Robot Model", 0, (Fl_Callback *)view_robo_CB, 0, FL_MENU_DIVIDER},
 			{"Bill of Sale"},
 			{"Order by SA"},
 			{"All Orders"},

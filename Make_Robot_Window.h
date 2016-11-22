@@ -12,7 +12,7 @@ class Make_Robot_Window
 	public:
 		Make_Robot_Window();
 
-		void make_window(Robot);
+		void make_window(Robot, Robot);
 
 		Robot get_robo_m_r();
 };

@@ -148,7 +148,11 @@ void Head_Window::show_head_tab(vector <Head> noggin)
 	pos = 0;
 	nog = noggin;
 	
-	show_heads();
+	if (size != -1)
+	{
+		show_heads();
+	}
+	
 
 
 }
