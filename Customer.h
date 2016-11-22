@@ -12,17 +12,27 @@ public:
 
 	Customer(string name, string num)
 	{
-		name = name;
+		name_3 = name;
 		cell_num = num;
 	}
 
-	void cust_input();
+	string get_name()
+	{
+		return name_3;
+	}
 
+	string get_cell()
+	{
+		return cell_num;
+	}
+
+	
 
 
 private:
-	string name;
+	string name_3;
 	string cell_num;
+
 };
 
 

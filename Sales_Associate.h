@@ -12,13 +12,25 @@ class Sales_Associate
 
 		Sales_Associate(string nom, string identity)
 		{
-			name = nom;
-			id = identity;
+			name_7 = nom;
+			id_9 = identity;
 		}
 
+		string get_sa_name()
+		{
+			return name_7;
+		}
+
+		string get_sa_id()
+		{
+			return id_9;
+		}
+
+
+
 	private:
-		string name;
-		string id;
+		string name_7;
+		string id_9;
 };
 
 

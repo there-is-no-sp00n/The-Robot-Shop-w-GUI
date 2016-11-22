@@ -21,9 +21,12 @@
 #include "Arm_Window.h"
 #include "Locomotor_Window.h"
 #include "Battery_Window.h"
+#include "Customer_Window.h"
+#include "Sales_Associate_Window.h"
 
 #include "Robot_View_Window.h"
 #include "Make_Robot_Window.h"
+#include "Order_Window.h"
 
 #include "Customer.h"
 #include "Sales_Associate.h"

@@ -7,6 +7,7 @@ Make_Robot_Window lets_go;
 vector <Customer> cust_list;
 vector <Sales_Associate> sa_list;
 
+
 void head_CB (Fl_Widget *w, void *p)
 {
 	cout << "head callback" << endl;
@@ -225,6 +226,37 @@ void create_sa_CB(Fl_Widget *w, void *p)
 
 //**
 
+Order_Window da_orders;
+vector <Order_Window> all_da_info;
+
+void create_order_CB(Fl_Widget *w, void *p)
+{
+	all_da_info = da_orders.get_ordersss();
+	rob_2 = lets_go.get_robo_m_r();
+	cout << "create order CB" << endl;
+	cout << cust_list.size() << endl;
+	da_orders.make_my_money(cust_list, sa_list, rob_2);
+	cout << "size of order in view " << all_da_info.size() << endl;
+	
+	//cout << "size of order in view " << all_da_info.size() << endl;
+
+}
+
+void view_customer_CB(Fl_Widget *w, void *p)
+{
+	cout << "view customer callback" << endl;
+	Customer_Window coco;
+	coco.show_customer_tab(cust_list);
+
+}
+
+void view_sa_CB(Fl_Widget *w, void *p)
+{
+	cout << "view sa callback" << endl;
+	Sales_Associate_Window polo;
+	polo.show_asso_tab(sa_list);
+}
+
 View::View()
 {
 
@@ -253,7 +285,7 @@ int View::show_the_goods()
 			{"Battery",0, (Fl_Callback*)battery_CB},
 			{0},
 			{"Robot Model", 0, (Fl_Callback *)create_robo_CB,0, FL_MENU_DIVIDER},
-			{"&Order",0 ,0 ,0, FL_MENU_DIVIDER},
+			{"&Order",0 ,(Fl_Callback *)create_order_CB,0, FL_MENU_DIVIDER},
 			{"Customer",0, (Fl_Callback *)create_cust_CB},
 			{"Sales Associate", 0, (Fl_Callback *)create_sa_CB},
 		{0},
@@ -267,10 +299,10 @@ int View::show_the_goods()
 			{"Battery", 0, (Fl_Callback *)view_bat_CB},
 			{0},
 			{"Robot Model", 0, (Fl_Callback *)view_robo_CB, 0, FL_MENU_DIVIDER},
-			{"Bill of Sale"},
-			{"Order by SA"},
-			{"All Orders"},
-			{"Sales Report"},
+			{"Customer",0, (Fl_Callback *)view_customer_CB},
+			{"Associate", 0, (Fl_Callback *)view_sa_CB},
+			//{"All Orders"},
+			//{"Sales Report"},
 		{0},
 		{0}
 	};
