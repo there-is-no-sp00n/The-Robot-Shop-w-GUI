@@ -23,8 +23,10 @@
 #include "Battery_Window.h"
 
 #include "Robot_View_Window.h"
-
 #include "Make_Robot_Window.h"
+
+#include "Customer.h"
+#include "Sales_Associate.h"
 
 #include <string>
 

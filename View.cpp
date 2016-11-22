@@ -4,6 +4,9 @@ Robot rob, rob_2;
 Robot_Part_Dialog talk;
 Make_Robot_Window lets_go;
 
+vector <Customer> cust_list;
+vector <Sales_Associate> sa_list;
+
 void head_CB (Fl_Widget *w, void *p)
 {
 	cout << "head callback" << endl;
@@ -145,6 +148,83 @@ void view_bat_CB(Fl_Widget *w, void *p)
 
 }
 
+//**
+//customer and sales associate input
+
+Fl_Window *cust_win;
+Fl_Input *cust_name, *cust_id;
+string names, cell_nums;
+
+void enter_cust_CB(Fl_Widget *w, void *p)
+{
+
+	cust_win->hide();
+
+	names = cust_name->value();
+	cell_nums = cust_id->value();
+	
+	cout << "Name: " << names << endl;
+	cout << "Cell: " << cell_nums << endl;
+
+	Customer beloved(names, cell_nums);
+	cust_list.push_back(beloved);
+
+	cout << "Customer Size:" << cust_list.size() << endl;
+}
+
+void create_cust_CB(Fl_Widget *w, void *p)
+{
+	cout << "create customer callback" << endl;	
+	
+	Fl_Button *create_cust;
+
+	cust_win = new Fl_Window(400,400, "Customer Input");
+	cust_name = new Fl_Input(150,100, 100,60, "Customer Name:");
+	cust_id = new Fl_Input(150,200, 100,60, "Customer Cell:");
+
+	create_cust = new Fl_Button(300,300, 70,50, "CREATE");
+	create_cust->callback((Fl_Callback*)enter_cust_CB,0);
+
+	cust_win->end();
+	cust_win->show();
+
+}
+
+void enter_sa_CB(Fl_Widget *w, void *p)
+{
+	cust_win->hide();
+
+	names = cust_name->value();
+	cell_nums = cust_id->value();
+	
+	cout << "Name: " << names << endl;
+	cout << "ID: " << cell_nums << endl;
+
+	Sales_Associate dinero(names, cell_nums);
+	sa_list.push_back(dinero);
+
+	cout << "Sales Associate Size:" << sa_list.size() << endl;
+}
+
+void create_sa_CB(Fl_Widget *w, void *p)
+{
+	cout << "create sales associate callback" << endl;	
+	
+	Fl_Button *create_sa;
+
+	cust_win = new Fl_Window(400,400, "Sales Associate Input");
+	cust_name = new Fl_Input(150,100, 100,60, "Associate Name:");
+	cust_id = new Fl_Input(150,200, 100,60, "Associate ID:");
+
+	create_sa = new Fl_Button(300,300, 70,50, "CREATE");
+	create_sa->callback((Fl_Callback*)enter_sa_CB,0);
+
+	cust_win->end();
+	cust_win->show();
+}
+
+//**
+
 View::View()
 {
 
@@ -173,7 +253,9 @@ int View::show_the_goods()
 			{"Battery",0, (Fl_Callback*)battery_CB},
 			{0},
 			{"Robot Model", 0, (Fl_Callback *)create_robo_CB,0, FL_MENU_DIVIDER},
-			{"&Order"},
+			{"&Order",0 ,0 ,0, FL_MENU_DIVIDER},
+			{"Customer",0, (Fl_Callback *)create_cust_CB},
+			{"Sales Associate", 0, (Fl_Callback *)create_sa_CB},
 		{0},
 		{"&View", 0,0,0, FL_SUBMENU},
 			//{"Comp",0, (Fl_Callback*)view_comp_CB},
